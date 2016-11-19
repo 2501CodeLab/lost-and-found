@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+   
+    <!-- ------------- -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ------------- -->
+    <title>Home - Zyplos</title>
+    <meta name="description" content="The LT Lost & Found app is a community-driven app that helps students find and report items found around Lane Tech.">
+    <meta name="author" content="LTCodelab">
+    <!-- ------------- -->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection" />
+    <link href="assets/css/styles.css" rel="stylesheet" type="text/css">
+    <!-- ------------- -->
+    <meta property="og:url" content="http://lanetech.org/codelab/lostandfound">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Lane Tech Lost & Found">
+    <meta property="og:image" content="http://lanetech.org/assets/codelab/lostandfound/media/fb_bk.png">
+    <meta property="og:description" content="The LT Lost & Found app is a community-driven app that helps students find and report items found around Lane Tech.">
+    <!-- ------------- -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@LTCodelab" />
+    <meta name="twitter:creator" content="@LTCodelab" />
+    <!-- ------------- -->
+    <meta name="theme-color" content="#43A047">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- ------------- -->
+
+    <!-- Favicons -->
+
+    <!-- ------------- -->
+    <!--<script src="assets/core/js/stuff.js"></script>-->
+    
+    <style>
+        
+        
+         .input-field input[type=text]:focus + label {
+     color: #43a047;
+   }
+
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #43a047;
+     box-shadow: 0 1px 0 0 #43a047;
+   }
+   
+   
+     .input-field input[type=password]:focus + label {
+     color: #43a047;
+   }
+
+   .input-field input[type=password]:focus {
+     border-bottom: 1px solid #43a047;
+     box-shadow: 0 1px 0 0 #43a047;
+   }
+   
+   
+   
+        
+    </style>
+
+
+</head>
+
+<body>
+    <header>
+        <nav class="green darken-1">
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo" id="logo-title">Lost & Found</a>
+                <a href="#" data-activates="mobiledrawer" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">New Post</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li><a class="modal-trigger" href="#searchbox"><i class="material-icons">search</i></a></li>
+
+
+                </ul>
+                <ul class="side-nav" id="mobiledrawer">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">New Post</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li><a class="modal-trigger" href="#searchbox">Search</a></li>
+
+
+
+                </ul>
+
+
+
+            </div>
+        </nav>
+
+        <!-- Hidden/Modals -->
+        <div id="searchbox" class="modal bottom-sheet">
+            <div class="modal-content">
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <div class="modal-action modal-close btn-flat right">&times;</div>
+                                <h4>Search</h4><input placeholder="This doesn't actually work." type="text">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ---------- -->
+
+    </header>
+
+
+   <main>
+       
+       <br>
+       
+       <div class="container center-align">
+           
+           
+           
+           
+           <div class="row">
+               
+               <div class="col s12">
+                   
+                   <h3>Login</h3>
+                   
+               <p>Use your Google account to log in and be able to post items.</p>
+               
+               
+               <a class="waves-effect waves-light btn-large yellow darken-2"><i class="material-icons left">account_circle</i> Sign in with Google</a>
+               
+               
+               </div>
+               
+               
+               
+               <!--  -->
+              
+               
+           </div>
+           
+           
+       </div>
+       
+       
+       
+   </main>
+
+
+    <footer class="page-footer green darken-1">
+        <div class="container">
+            <div class="center-align">
+                <h5 class="white-text">Lane Tech</h5>
+                <p class="grey-text text-lighten-4"><a href="http://lanetech.org" target="_blank" class="btn yellow darken-2">Home Page</a></p>
+                <p class="grey-text text-lighten-4">2501 W Addison St, Chicago, IL 60618</p>
+                <p class="grey-text text-lighten-4">Phone: (773) 534-5400 | Fax: (773) 534-5544</p>
+            </div>
+            <br>
+        </div>
+        <div class="footer-copyright green darken-2">
+            <div class="container"> <a class="grey-text text-lighten-4" href="http://cps.edu">Chicago Public Schools</a> <a class="grey-text text-lighten-4 right" href="#">Created by the Codelab Team</a> </div>
+        </div>
+    </footer>
+
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/materialize.min.js"></script>
+
+    <script>
+        // init
+        $(document).ready(function() {
+            $('.modal-trigger').leanModal();
+            $(".button-collapse").sideNav();
+        });
+    </script>
+
+</body>
+
+</html>
