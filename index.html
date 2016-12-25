@@ -1,286 +1,395 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-<head>
-  
-   
-    <!-- ------------- -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- ------------- -->
-    <title>Home - LT Lost & Found</title>
-    <meta name="description" content="The LT Lost & Found app is a community-driven app that helps students find and report items found around Lane Tech.">
-    <meta name="author" content="LTCodelab">
-    <!-- ------------- -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection" />
-    <link href="assets/css/styles.css" rel="stylesheet" type="text/css">
-    <!-- ------------- -->
-    <meta property="og:url" content="http://lanetech.org/codelab/lostandfound">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Lane Tech Lost & Found">
-    <meta property="og:image" content="http://lanetech.org/assets/codelab/lostandfound/media/fb_bk.png">
-    <meta property="og:description" content="The LT Lost & Found app is a community-driven app that helps students find and report items found around Lane Tech.">
-    <!-- ------------- -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@LTCodelab" />
-    <meta name="twitter:creator" content="@LTCodelab" />
-    <!-- ------------- -->
-    <meta name="theme-color" content="#43A047">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- ------------- -->
+    <head>
+        <!-- Viewports -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Desc. -->
+        <title>Home - LT Lost & Found | LTCodelab</title>
+        <meta name="description" content="The LT Lost & Found app is a community-driven app that helps students find and report items found around Lane Tech.">
+        <meta name="author" content="Zyplos">
+        <!-- CSS -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://bootswatch.com/paper/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <!-- OpenGraph -->
+        <meta property="og:url" content="https://2501codelab.github.io/">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Lane Tech Codelab">
+        <meta property="og:image" content="https://2501codelab.github.io/assets/media/fb_bk.png">
+        <meta property="og:description" content="The LT Lost & Found app is a community-driven app that helps students find and report items found around Lane Tech.">
+        <meta property="og:site_name" content="LT Lost & Found">
+        <meta property="og:locale" content="en_US">
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@LTCodelab" />
+        <meta name="twitter:creator" content="@Zyplos" />
+        <!-- Mobile -->
+        <meta name="theme-color" content="#4CAF50">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <!-- Favicons -->
+        <!-- TODO Generate icons -->
+        <style>
+            html {
+                position: relative;
+                min-height: 100%;
+            }
 
-    <!-- Favicons -->
+            body {
+                margin-bottom: 60px;
+            }
 
-    <!-- ------------- -->
-    <!--<script src="assets/core/js/stuff.js"></script>-->
-   
-    <style>
-.taglist {
-    bottom: 0;
-}
-</style>
+            #main-header {
+              margin-top: 64px;
+            }
 
+            .logout-header {
+                color: #ffde00;
+                background-color: #4CAF50;
+                height: 500px;
+                text-align: center;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
 
-</head>
+            .login-header {
+              color: #ffde00;
+              background-color: #4CAF50;
+                height: 500px;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
 
-<body>
-    <header>
-        <nav class="green darken-1">
-            <div class="nav-wrapper">
-                <a href="#!" class="brand-logo" id="logo-title">Lost & Found</a>
-                <a href="#" data-activates="mobiledrawer" class="button-collapse"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">New Post</a></li>
-                    <li><a href="#">Login</a></li>
-                    <li><a class="modal-trigger" href="#searchbox"><i class="material-icons">search</i></a></li>
+            #version {
+                font-size: 8px;
+                color: lightgray;
+            }
 
+            .navbar-default {
+                background-color: #4CAF50;
+            }
 
-            </ul>
-                <ul class="side-nav" id="mobiledrawer">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">New Post</a></li>
-                    <li><a href="#">Login</a></li>
-                    <li><a class="modal-trigger" href="#searchbox">Search</a></li>
+            .navbar-default .navbar-brand {
+                color: #baeaff;
+            }
 
+            .navbar-default .navbar-brand:focus,
+            .navbar-default .navbar-brand:hover {
+                color: #FFFFFF;
+            }
 
+            .navbar-default .navbar-nav>li>a {
+                color: #d6d6d6;
+            }
 
-            </ul>
+            .navbar-default .navbar-nav>li>a:focus,
+            .navbar-default .navbar-nav>li>a:hover {
+                color: #FFFFFF;
+            }
 
+            .navbar-default .navbar-nav>.open>a,
+            .navbar-default .navbar-nav>.open>a:focus,
+            .navbar-default .navbar-nav>.open>a:hover {
+                background-color: #439c46;
+                color: #FFFFFF;
+            }
+            /*
+    .dropdown-menu{
+        background-color: #E01818;
+    }
 
+    .dropdown-menu>li>a{
+        color: white;
+    }*/
 
-        </div>
-    </nav>
+            .navbar {
+                -webkit-box-shadow: none;
+            }
 
-        <!-- Hidden/Modals -->
-        <div id="searchbox" class="modal bottom-sheet">
-            <div class="modal-content">
-                <div class="row">
-                    <form class="col s12">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <div class="modal-action modal-close btn-flat right">&times;</div>
-                                <h4>Search</h4>
-                                <input placeholder="This doesn't actually work." type="text">
-                        </div>
+            .navbar a.navbar-brand {
+                padding: 9px 15px 8px;
+            }
+
+            #navbar-image-main {
+                height: 45px !important;
+            }
+
+            footer {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 80px;
+                background-color: #4CAF50;
+            }
+
+            @media (max-width: 768px) {
+                .text-left {
+                    text-align: center;
+                }
+                .text-right {
+                    text-align: center;
+                }
+            }
+
+            #main {
+                margin-top: 20px;
+            }
+
+             ::-webkit-scrollbar-track {
+                background-color: #CCCCCC;
+            }
+
+             ::-webkit-scrollbar {
+                width: 10px;
+                background-color: #CCCCCC;
+            }
+
+             ::-webkit-scrollbar-thumb {
+                background-color: #ffde00;
+            }
+
+            small {
+                color: #a7a7a7;
+            }
+
+            .item_tag {
+                background-color: #dedede;
+                padding: 5px;
+                border-radius: 10px;
+            }
+
+            .unclaimed {
+                background-color: #ff3e3e;
+                color: white;
+            }
+
+            .moreInfoBtn {
+                cursor: pointer;
+            }
+
+            @media(max-width: 767px) {
+                .tags_header {
+                    display: none;
+                }
+            }
+
+            #user-img {
+                max-width: 200px;
+                max-height: 200px;
+                display: inline-block;
+            }
+        </style>
+        <!-- [indev] -->
+        <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function() {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    },
+                    i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-88791541-2', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+
+    <body>
+        <!-- Modalspace -->
+        <div class="modal fade fade" id="aboutModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">About</h4> </div>
+                    <div class="modal-body">
+                        <p>The LT Lost & Found app is a community-driven app that helps students find and report items found around Lane Tech!</p>
+                        <p>You can browse found items and check where it is for you to pick it up.</p>
+                        <p>If you found a lost item, you can log in and create a post!</p>
                     </div>
-                </form>
+                    <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div>
+                </div>
             </div>
         </div>
-    </div>
-
-        <!-- ---------- -->
-
-</header>
-
-
-    <main>
-        <div class="container">
-
-            <h3>Recent Items</h3>
-            
-            
-           <!-- --> 
-            
-             <div class="card medium">
-    <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="assets/media/dev.png">
-</div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">{Title}
-      <div class="right">   
-          <div class="chip">{Tag1}</div> 
-          <div class="chip">{Tag2}</div> 
-          <div class="chip light-green">{Claimed/Not Claimed}</div> 
-           
-          <i class="material-icons">more_vert</i></div>
-      </span>
-      <p>{Description}</p>  
-      
-      
-      
-      
-      
-</div>
-    
-    
-    
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">{Title}<i class="material-icons right">close</i></span>
-      
-      <p>{Description}</p>
-        <p>Item currently in: <b>{Room/Gym/OtherLocation #}</b></p>
-      <br>
-       
-       <div class="taglist">
-                                <div class="chip">{Tag1}</div> 
-          <div class="chip">{Tag2}</div> 
-          <div class="chip light-green">{Claimed/Not Claimed}</div> 
-</div>
-       
-        <img class="responsive-img" src="assets/media/dev.png">
-        
-
-      
-      
-</div>
-
-  </div>
-  
-  <!-- -->
-
-
-            <div class="card medium">
-    <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="assets/media/dev2.jpg">
-</div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Lost Sweater
-      <div class="right">   
-          <div class="chip">Sweater</div> 
-          <div class="chip red">Not Claimed</div>  
-          <i class="material-icons">more_vert</i></div>
-      </span>
-      <p>I found this sweater in room 137 around noon, it was in one of the chairs, its blue and torn and stuff</p>  
-      
-      
-      
-      
-      
-</div>
-    
-    
-    
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">Lost Sweater<i class="material-icons right">close</i></span>
-      
-      <p>I found this sweater in room 137 around noon, it was in one of the chairs, its blue and torn and stuff</p>
-        <p>Item currently in: <b>Room 118</b></p>
-      <br>
-       <div class="taglist">
-                                <div class="chip">Sweater</div> 
-                                <div class="chip red">Not Claimed</div>
-</div>
-        <img class="responsive-img" src="assets/media/dev2.jpg">
-        
-
-      
-      
-</div>
-
-  </div>
-
-
-      
-        
-        
-        
-            <div class="card medium">
-    <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="assets/media/dev3.jpeg">
-</div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Bag of Money
-      <div class="right">   
-          <div class="chip">money</div> 
-          <div class="chip">Gym 2</div> 
-          <div class="chip light-green">Claimed</div>  
-          <i class="material-icons">more_vert</i></div>
-      </span>
-      <p>found a bag with a lot of hundred dollar bills in them in gym 2 idk if anyone wants to claim it</p>  
-      
-      
-      
-      
-      
-</div>
-    
-    
-    
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">Bag of Money<i class="material-icons right">close</i></span>
-      
-      <p>found a bag with a lot of hundred dollar bills in them in gym 2 idk if anyone wants to claim it</p>
-      <p>Item currently in: <b>Room 118</b></p>
-      <br>
-       
-        <div class="taglist">
-                                <div class="chip">money</div> 
-                                <div class="chip">gym_2</div> 
-                                <div class="chip light-green">Claimed</div>
-</div>
-        <img class="responsive-img" src="assets/media/dev3.jpeg">
-       
-
-      
-      
-</div>
-
-  </div>
-  
-  
-  
-
-
-    </div>
-        
-        
-</main>
-
-
-    <footer class="page-footer green darken-1">
-        <div class="container">
-            <div class="center-align">
-                <h5 class="white-text">Lane Tech</h5>
-                <p class="grey-text text-lighten-4"><a href="http://lanetech.org" target="_blank" class="btn yellow darken-2">Home Page</a></p>
-                <p class="grey-text text-lighten-4">2501 W Addison St, Chicago, IL 60618</p>
-                <p class="grey-text text-lighten-4">Phone: (773) 534-5400 | Fax: (773) 534-5544</p>
+        <!-- -->
+        <div class="modal fade fade" id="exmodal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">ITEM TITLE</h4> </div>
+                    <div class="modal-body">
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
+                            eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis
+                            pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat
+                            a, tellus. Phasellus</p> <br>
+                        <h5>Info</h5> <address>
+                            <strong>John Doe</strong><br>
+                            <a href="mailto:#">me@cps.edu</a>
+                        </address> <img src="assets/media/item_full_1080p.png" class="img-responsive" /> </div>
+                    <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div>
+                </div>
+            </div>
         </div>
-            <br>
-    </div>
-        <div class="footer-copyright green darken-2">
-            <div class="container"> <a class="grey-text text-lighten-4" href="http://cps.edu">Chicago Public Schools</a> <a class="grey-text text-lighten-4 right" href="#">Created by the Codelab Team</a> </div>
-    </div>
-</footer>
-
-
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js">
-</script>
-    <script type="text/javascript" src="assets/js/materialize.min.js">
-</script>
-
-    <script>
-        // init
-        $(document).ready(function() {
-            $('.modal-trigger').leanModal();
-            $(".button-collapse").sideNav();
-        });
-    </script>
-
-</body>
+        <!-- -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">
+                        <!-- --><img src="assets/media/codelab_logo_dev.svg" id="navbar-image-main" />
+                        <!-- -->
+                    </a>
+                    <h5 class="navbar-text hidden-xs" style="color:#ebebeb">LT Lost & Found</h5> <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button> </div>
+                <div class="collapse navbar-collapse" id="mobile-menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden-sm hidden-md hidden-lg text-center">
+                            <h5 style="color:#ebebeb">LT Lost & Found</h5> </li>
+                        <li>
+                            <a href="/"> <b>Main Site</b> </a>
+                        </li>
+                        <li> <a href="/lost-and-found">
+                                Home
+                            </a> </li>
+                        <li> <a href="#" data-toggle="modal" data-target="#aboutModal">
+                                About
+                            </a> </li>
+                        <li id="accNavItem"> <a href="#"> Login </a> </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="jumbotron logout-header" id="main-header">
+            <div class="container">
+                <h1 style="color:#ffde00;">Welcome</h1>
+                <p>to the <b>Lost & Found</b> app!</p> <button class="btn btn-default" data-toggle="modal" data-target="#aboutModal">Get Started</button> </div>
+        </div>
+        <div class="container" id="main">
+            <div class="panel panel-default">
+                <div class="panel-heading">{IMG} Angel Carbajal <small>5 days ago</small> <span class="tags_header pull-right">
+                        <span class="item_tag">Sweater</span> <span class="item_tag unclaimed">Not Claimed</span> </span>
+                </div>
+                <div class="panel-body">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-1 text-center"> <img src="assets/media/item_thumb_default.png" class="item_thumb" /> </div>
+                            <div class="col-xs-12 col-sm-11">
+                                <h5 class="lead" style="display:inline-block">ITEM TITLE</h5> <span class="pull-right moreInfoBtn" style="display:inline-block;padding-top:12px">
+                                    <i class="material-icons">more_vert</i>
+                                </span>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
+                                    nec, pellentesque eu, pretium quis, sem. Nulla consequa...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <br>
+        <footer>
+            <div class="container" style="color: #ffde00">
+                <div style="padding-top: 30px" class="pull-left">
+                    <p>Made by LTCodelab with <span style="font-family: monospace;color:#ff3e3e;">&lt;/&gt;</span> 2017</p>
+                </div>
+                <div style="padding-top: 20px" class="pull-right"> <img src="assets/media/zyplos_logo.svg" style="height: 45px" /> </div>
+            </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+        <script src="assets/js/core.js"></script>
+        <script>
+            console.log('%c --------------------------------------', 'color: #ff3e3e;');
+            console.log('%c Hey!', 'color: #ff3e3e;');
+            console.log('%c ', 'color: #ff3e3e;');
+            console.log('%c You! Yeah you!', 'color: #ff3e3e;');
+            console.log('%c Snooping around the console!', 'color: #ff3e3e;');
+            console.log('%c That\'s okay, if anything, we encourage it! Check out our Github at: https://github.com/2501CodeLab/', 'color: #ff3e3e;');
+            console.log('%c Consider passing by one of our Codelab meetings.', 'color: #ff3e3e;');
+            console.log('%c --------------------------------------', 'color: #ff3e3e;');
+            $(window).scroll(function() {
+                var sPos = $(window).scrollTop();
+                if (sPos > 450) {
+                    $(".navbar").css({
+                        "-webkit-box-shadow": "0 1px 2px rgba(0,0,0,0.3)"
+                    });
+                } else {
+                    $(".navbar").css({
+                        "-webkit-box-shadow": "none"
+                    });
+                }
+            });
+        </script>
+        <script>
+            $(".moreInfoBtn").click(function() {
+                $('#exmodal').modal('show');
+            });
+        </script>
+        <script>
+            var uid = "";
+            var userRef = firebase.database().ref('/');
+            var lg = false;
+            //
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    uid = user.uid;
+                    lg = true;
+                    $("#accNavItem").html('<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' + user.displayName +
+                        ' <span class="caret"></span> </a> <ul class="dropdown-menu"> <li> <a href="account/index.html">Your Posts</a> </li> <li> <a href="#" id="logout">Logout</a> </li> </ul>');
+                        $("#accNavItem").addClass('dropdown');
+                        $("#main-header").removeClass('logout-header');
+                        $("#main-header").addClass('login-header');
+                        $("#main-header").html('<div class="container"> <img src="'+ user.photoURL +'" class="img-rounded img-responsive" id="user-img" /> <div style="display:inline-block; margin-left: 40px"> <h1 style="color:#FFEB3B;" id="header-text-main">'+ user.displayName +'</h1> <p id="header-text-secondary"><button class="btn btn-default" data-toggle="modal" data-target="#aboutModal">Get Started</button> </p> </div> </div>');
+                    userRef = firebase.database().ref('/users/' + uid + "/");
+                    //
+                    userRef.set({
+                        "name": user.displayName,
+                        "gmail": user.email,
+                        "profile_picture": user.photoURL
+                    });
+                }
+            });
+            //
+            $("nav").on("click", "li#accNavItem", function() {
+                if (!lg) {
+                    var provider = new firebase.auth.GoogleAuthProvider();
+                    firebase.auth().signInWithPopup(provider);
+                }
+            });
+            $("nav").on("click", "a#logout", function() {
+                if (lg) {
+                    firebase.auth().signOut().then(function() {
+                        $("#accNavItem").html('<a href="#"> Login </a>');
+                        $("#accNavItem").removeClass('dropdown');
+                        $("#accNavItem").removeClass('open');
+                        $("#main-header").removeClass('login-header');
+                        $("#main-header").addClass('logout-header');
+                        $("#main-header").html('<div class="container"> <h1 style="color:#ffde00;">Welcome</h1> <p>to the <b>Lost & Found</b> app!</p> <button class="btn btn-default" data-toggle="modal" data-target="#aboutModal">Get Started</button> </div>');
+                        lg = false;
+                    }, function(error) {
+                        console.log("um " + error);
+                    });
+                }
+            });
+        </script>
+    </body>
 
 </html>
