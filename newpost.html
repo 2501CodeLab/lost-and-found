@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Desc. -->
-        <title>Home - LT Lost & Found | LTCodelab</title>
+        <title>New Post - LT Lost & Found | LTCodelab</title>
         <meta name="description" content="The LT Lost & Found app is a community-driven app that helps students find and report items found around Lane Tech.">
         <meta name="author" content="Zyplos">
         <!-- CSS -->
@@ -40,37 +40,6 @@
 
             body {
                 margin-bottom: 60px;
-            }
-
-            #main-header {
-              margin-top: 64px;
-            }
-
-            .logout-header {
-                color: #ffde00;
-                background-color: #4CAF50;
-                height: 500px;
-                text-align: center;
-                display: -webkit-box;
-                display: -moz-box;
-                display: -ms-flexbox;
-                display: -webkit-flex;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .login-header {
-              color: #ffde00;
-              background-color: #4CAF50;
-                height: 500px;
-                display: -webkit-box;
-                display: -moz-box;
-                display: -ms-flexbox;
-                display: -webkit-flex;
-                display: flex;
-                justify-content: center;
-                align-items: center;
             }
 
             #version {
@@ -116,7 +85,7 @@
     }*/
 
             .navbar {
-                -webkit-box-shadow: none;
+                -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
             }
 
             .navbar a.navbar-brand {
@@ -145,7 +114,7 @@
             }
 
             #main {
-                margin-top: 20px;
+                margin-top: 70px;
             }
 
              ::-webkit-scrollbar-track {
@@ -167,8 +136,9 @@
 
             .item_tag {
                 background-color: #dedede;
-                padding: 5px;
+                padding: 6px;
                 border-radius: 10px;
+                margin: 5px;
             }
 
             .unclaimed {
@@ -190,6 +160,18 @@
                 max-width: 200px;
                 max-height: 200px;
                 display: inline-block;
+            }
+
+            #tagsList {
+                background-color: #f5f5f5;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                align-items: center;
+                height: 75px;
+                padding: 10px;
             }
         </style>
         <!-- [indev] -->
@@ -213,39 +195,6 @@
 
     <body>
         <!-- Modalspace -->
-        <div class="modal fade fade" id="aboutModal" tabindex="-1">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">About</h4> </div>
-                    <div class="modal-body">
-                        <p>The LT Lost & Found app is a community-driven app that helps students find and report items found around Lane Tech!</p>
-                        <p>You can browse found items and check where it is for you to pick it up.</p>
-                        <p>If you found a lost item, you can log in and create a post!</p>
-                    </div>
-                    <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div>
-                </div>
-            </div>
-        </div>
-        <!-- -->
-        <div class="modal fade fade" id="exmodal" tabindex="-1">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">ITEM TITLE</h4> </div>
-                    <div class="modal-body">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                            eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis
-                            pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat
-                            a, tellus. Phasellus</p> <br>
-                        <h5>Info</h5> <address>
-                            <strong>John Doe</strong><br>
-                            <a href="mailto:#">me@cps.edu</a>
-                        </address> <img src="assets/media/item_full_1080p.png" class="img-responsive" /> </div>
-                    <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div>
-                </div>
-            </div>
-        </div>
         <!-- -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
@@ -268,42 +217,54 @@
                             <a href="/"> <b>Main Site</b> </a>
                         </li>
                         <li> <a href="/lost-and-found">
-                                Home
+                                Go Back
                             </a> </li>
-                        <li> <a href="#" data-toggle="modal" data-target="#aboutModal">
-                                About
-                            </a> </li>
-                        <li id="accNavItem"> <a href="#"> Login </a> </li>
+                        <li id="accNavItem"> </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="jumbotron logout-header" id="main-header">
-            <div class="container">
-                <h1 style="color:#ffde00;">Welcome</h1>
-                <p>to the <b>Lost & Found</b> app!</p> <button class="btn btn-default" data-toggle="modal" data-target="#aboutModal">Get Started</button> </div>
-        </div>
         <div class="container" id="main">
-            <div class="panel panel-default">
-                <div class="panel-heading">{IMG} Angel Carbajal <small>5 days ago</small> <span class="tags_header pull-right">
-                        <span class="item_tag">Sweater</span> <span class="item_tag unclaimed">Not Claimed</span> </span>
-                </div>
-                <div class="panel-body">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-1 text-center"> <img src="assets/media/item_thumb_default.png" class="item_thumb" /> </div>
-                            <div class="col-xs-12 col-sm-11">
-                                <h5 class="lead" style="display:inline-block">ITEM TITLE</h5> <span class="pull-right moreInfoBtn" style="display:inline-block;padding-top:12px">
-                                    <i class="material-icons">more_vert</i>
-                                </span>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
-                                    nec, pellentesque eu, pretium quis, sem. Nulla consequa...</p>
-                            </div>
-                        </div>
+            <h2>New Post</h2>
+            <div class="form-group"> <label class="control-label" for="item_title">Title</label> <input class="form-control" id="item_title" type="text" placeholder=""><span class="help-block"><span id="charCount">0</span>/30</span>
+            </div>
+            <div class="form-group"> <label for="item_desc" class="control-label">Description</label> <textarea class="form-control" rows="3" id="item_desc"></textarea> <span class="help-block"><span id="charCount">0</span>/420 (Your description will be cut to 210 characters
+                on the front page.)</span>
+            </div>
+            <div class="form-group"> <label class="control-label">Add a Picture</label>
+                <div class="input-group"> <label class="input-group-btn">
+                   <span class="btn btn-primary">
+                       Browse <input type="file" style="display: none;">
+                   </span>
+               </label> <input type="text" class="form-control" readonly style="padding-left: 20px"> </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4"><label class="control-label" for="tags_input">Tags</label> <input class="form-control" id="tags_input" type="text"><span class="help-block">Up to 5 tags allowed, each 10 characters long. No spaces.</span></div>
+                    <div class="col-xs-12 col-sm-8">
+                        <div id="tagsList"> </div>
                     </div>
                 </div>
             </div>
-        </div> <br>
+            <div class="form-group"> <label class="control-label">Current Location of Item</label>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="radio"> <label>
+               <input type="radio" name="item_loc" value="room" checked="">
+               Room, office, etc.
+             </label> </div>
+                        <div class="radio"> <label>
+               <input type="radio" name="item_loc" value="has">
+               I have it
+             </label> </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-8"> <input class="form-control" id="item_loc" type="text" placeholder=""> </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary center-block">Submit</button>
+
+        </div><br>
         <footer>
             <div class="container" style="color: #ffde00">
                 <div style="padding-top: 30px" class="pull-left">
@@ -325,22 +286,46 @@
             console.log('%c That\'s okay, if anything, we encourage it! Check out our Github at: https://github.com/2501CodeLab/', 'color: #ff3e3e;');
             console.log('%c Consider passing by one of our Codelab meetings.', 'color: #ff3e3e;');
             console.log('%c --------------------------------------', 'color: #ff3e3e;');
-            $(window).scroll(function() {
-                var sPos = $(window).scrollTop();
-                if (sPos > 450) {
-                    $(".navbar").css({
-                        "-webkit-box-shadow": "0 1px 2px rgba(0,0,0,0.3)"
-                    });
-                } else {
-                    $(".navbar").css({
-                        "-webkit-box-shadow": "none"
-                    });
-                }
-            });
         </script>
         <script>
-            $(".moreInfoBtn").click(function() {
-                $('#exmodal').modal('show');
+            // https://www.abeautifulsite.net/whipping-file-inputs-into-shape-with-bootstrap-3
+            $(function() {
+                $(document).on('change', ':file', function() {
+                    var input = $(this),
+                        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                    input.trigger('fileselect', [numFiles, label]);
+                });
+                $(document).ready(function() {
+                    $(':file').on('fileselect', function(event, numFiles, label) {
+                        var input = $(this).parents('.input-group').find(':text'),
+                            log = numFiles > 1 ? numFiles + ' files selected' : label;
+                        if (input.length) {
+                            input.val(log);
+                        } else {
+                            if (log) alert(log);
+                        }
+                    });
+                });
+            });
+            //
+            $(document).ready(function() {
+                var plc = ["Lost Sweater", "iPhone 7", "Bag of Money", "Someone's ID", "Coat", "Jacket", "Keys", "Someone's Late Homework Assignment"];
+                $("#item_title").attr('placeholder', plc[Math.floor(Math.random() * plc.length)]);
+            });
+            //
+            $('#tags_input').keypress(function(e) {
+                var key = e.which;
+                if (key == 32) {
+                    return false;
+                } else if (key == 13) {
+                    var tags = $(this).val();
+                    if (tags == "") {
+                        return;
+                    }
+                    $("#tagsList").append('<span class="item_tag">' + tags + '</span>');
+                    $(this).val("");
+                }
             });
         </script>
         <script>
@@ -353,11 +338,8 @@
                     uid = user.uid;
                     lg = true;
                     $("#accNavItem").html('<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' + user.displayName +
-                        ' <span class="caret"></span> </a> <ul class="dropdown-menu"> <li> <a href="posts.html">Your Posts</a> </li> <li> <a href="newpost.html">New Post</a> </li> <li> <a href="#" id="logout">Logout</a> </li> </ul>');
-                        $("#accNavItem").addClass('dropdown');
-                        $("#main-header").removeClass('logout-header');
-                        $("#main-header").addClass('login-header');
-                        $("#main-header").html('<div class="container"> <img src="'+ user.photoURL +'" class="img-rounded img-responsive" id="user-img" /> <div style="display:inline-block; margin-left: 40px"> <h1 style="color:#FFEB3B;" id="header-text-main">'+ user.displayName +'</h1> <p id="header-text-secondary"><button class="btn btn-default" data-toggle="modal" data-target="#aboutModal">Get Started</button> </p> </div> </div>');
+                        ' <span class="caret"></span> </a> <ul class="dropdown-menu"> <li> <a href="posts.html">Your Posts</a> </li> <li> <a href="#" id="logout">Logout</a> </li> </ul>');
+                    $("#accNavItem").addClass('dropdown');
                     userRef = firebase.database().ref('/users/' + uid + "/");
                     //
                     userRef.set({
@@ -365,24 +347,15 @@
                         "gmail": user.email,
                         "profile_picture": user.photoURL
                     });
+                } else {
+                    window.location.replace("/lost-and-found");
                 }
             });
             //
-            $("nav").on("click", "li#accNavItem", function() {
-                if (!lg) {
-                    var provider = new firebase.auth.GoogleAuthProvider();
-                    firebase.auth().signInWithPopup(provider);
-                }
-            });
             $("nav").on("click", "a#logout", function() {
                 if (lg) {
                     firebase.auth().signOut().then(function() {
-                        $("#accNavItem").html('<a href="#"> Login </a>');
-                        $("#accNavItem").removeClass('dropdown');
-                        $("#accNavItem").removeClass('open');
-                        $("#main-header").removeClass('login-header');
-                        $("#main-header").addClass('logout-header');
-                        $("#main-header").html('<div class="container"> <h1 style="color:#ffde00;">Welcome</h1> <p>to the <b>Lost & Found</b> app!</p> <button class="btn btn-default" data-toggle="modal" data-target="#aboutModal">Get Started</button> </div>');
+                        window.location.replace("/lost-and-found");
                         lg = false;
                     }, function(error) {
                         console.log("um " + error);
