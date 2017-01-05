@@ -7,24 +7,22 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Desc. -->
-        <title>Home - LT Lost & Found | LTCodelab</title>
+        <title>LT Lost & Found | LTCodelab</title>
         <meta name="description" content="The LT Lost & Found app is a community-driven app that helps students find and report items found around Lane Tech.">
-        <meta name="author" content="Zyplos">
+        <meta name="author" content="LTCodelab">
         <!-- CSS -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="https://bootswatch.com/paper/bootstrap.min.css" rel="stylesheet" type="text/css">
         <!-- OpenGraph -->
-        <meta property="og:url" content="https://2501codelab.github.io/">
+        <meta property="og:url" content="https://2501codelab.github.io/lost-and-found/">
         <meta property="og:type" content="website">
-        <meta property="og:title" content="Lane Tech Codelab">
-        <meta property="og:image" content="https://2501codelab.github.io/assets/media/fb_bk.png">
+        <meta property="og:title" content="LT Lost & Found">
         <meta property="og:description" content="The LT Lost & Found app is a community-driven app that helps students find and report items found around Lane Tech.">
-        <meta property="og:site_name" content="LT Lost & Found">
-        <meta property="og:locale" content="en_US">
+        <!--<meta property="og:image" content="https://2501codelab.github.io/lost-and-found/assets/media/fb_bk.png">-->
         <!-- Twitter -->
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@LTCodelab" />
+        <!--<meta name="twitter:site" content="@LTCodelab" />-->
         <meta name="twitter:creator" content="@Zyplos" />
         <!-- Mobile -->
         <meta name="theme-color" content="#4CAF50">
@@ -43,7 +41,7 @@
             }
 
             #main-header {
-              margin-top: 64px;
+                margin-top: 64px;
             }
 
             .logout-header {
@@ -61,8 +59,8 @@
             }
 
             .login-header {
-              color: #ffde00;
-              background-color: #4CAF50;
+                color: #ffde00;
+                background-color: #4CAF50;
                 height: 500px;
                 display: -webkit-box;
                 display: -moz-box;
@@ -106,14 +104,7 @@
                 background-color: #439c46;
                 color: #FFFFFF;
             }
-            /*
-    .dropdown-menu{
-        background-color: #E01818;
-    }
 
-    .dropdown-menu>li>a{
-        color: white;
-    }*/
 
             .navbar {
                 -webkit-box-shadow: none;
@@ -176,7 +167,12 @@
                 color: white;
             }
 
-            .moreInfoBtn {
+            .claimed {
+                background-color: #1bcb28;
+                color: white;
+            }
+
+            .infoBtn {
                 cursor: pointer;
             }
 
@@ -197,16 +193,15 @@
             (function(i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
                 i[r] = i[r] || function() {
-                        (i[r].q = i[r].q || []).push(arguments)
-                    },
-                    i[r].l = 1 * new Date();
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
                 a = s.createElement(o),
                     m = s.getElementsByTagName(o)[0];
                 a.async = 1;
                 a.src = g;
                 m.parentNode.insertBefore(a, m)
             })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-            ga('create', 'UA-88791541-2', 'auto');
+            ga('create', 'UA-88791541-3', 'auto');
             ga('send', 'pageview');
         </script>
     </head>
@@ -228,20 +223,42 @@
             </div>
         </div>
         <!-- -->
-        <div class="modal fade fade" id="exmodal" tabindex="-1">
+        <div class="modal fade fade" id="infoModal" tabindex="-1">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">ITEM TITLE</h4> </div>
+                        <h4 class="modal-title" id="info_title"></h4> </div>
                     <div class="modal-body">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                            eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis
-                            pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat
-                            a, tellus. Phasellus</p> <br>
-                        <h5>Info</h5> <address>
-                            <strong>John Doe</strong><br>
-                            <a href="mailto:#">me@cps.edu</a>
-                        </address> <img src="assets/media/item_full_1080p.png" class="img-responsive" /> </div>
+                        <p id="info_desc"></p> <br>
+                        <h5>Contact</h5> <address>
+                           <strong id="info_author"></strong><br>
+                           <a id="info_email" href="mailto:"></a>
+                       </address>
+                        <h5>Info</h5>
+                        <p>Posted on <span id="info_timestamp"></span></p>
+                        <div id="info_tags"></div> <br> <img id="info_picture" src="assets/media/item_full_1080p.png" class="img-responsive" /> </div>
+                    <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div>
+                </div>
+            </div>
+        </div>
+        <!-- -->
+        <div class="modal fade fade" id="errorLogModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p>You must be logged in to be able to post stuff and view your posts!</p>
+                    </div>
+                    <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div>
+                </div>
+            </div>
+        </div>
+        <!-- -->
+        <div class="modal fade fade" id="errorOrgModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p>The Lane Tech Lost & Found app is currently closed to Lane Tech students only.<br>You can look through posts, but you can't post any yourself.</p>
+                    </div>
                     <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div>
                 </div>
             </div>
@@ -284,25 +301,8 @@
                 <p>to the <b>Lost & Found</b> app!</p> <button class="btn btn-default" data-toggle="modal" data-target="#aboutModal">Get Started</button> </div>
         </div>
         <div class="container" id="main">
-            <div class="panel panel-default">
-                <div class="panel-heading">{IMG} Angel Carbajal <small>5 days ago</small> <span class="tags_header pull-right">
-                        <span class="item_tag">Sweater</span> <span class="item_tag unclaimed">Not Claimed</span> </span>
-                </div>
-                <div class="panel-body">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-1 text-center"> <img src="assets/media/item_thumb_default.png" class="item_thumb" /> </div>
-                            <div class="col-xs-12 col-sm-11">
-                                <h5 class="lead" style="display:inline-block">ITEM TITLE</h5> <span class="pull-right moreInfoBtn" style="display:inline-block;padding-top:12px">
-                                    <i class="material-icons">more_vert</i>
-                                </span>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
-                                    nec, pellentesque eu, pretium quis, sem. Nulla consequa...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+
         </div> <br>
         <footer>
             <div class="container" style="color: #ffde00">
@@ -317,14 +317,6 @@
         <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
         <script src="assets/js/core.js"></script>
         <script>
-            console.log('%c --------------------------------------', 'color: #ff3e3e;');
-            console.log('%c Hey!', 'color: #ff3e3e;');
-            console.log('%c ', 'color: #ff3e3e;');
-            console.log('%c You! Yeah you!', 'color: #ff3e3e;');
-            console.log('%c Snooping around the console!', 'color: #ff3e3e;');
-            console.log('%c That\'s okay, if anything, we encourage it! Check out our Github at: https://github.com/2501CodeLab/', 'color: #ff3e3e;');
-            console.log('%c Consider passing by one of our Codelab meetings.', 'color: #ff3e3e;');
-            console.log('%c --------------------------------------', 'color: #ff3e3e;');
             $(window).scroll(function() {
                 var sPos = $(window).scrollTop();
                 if (sPos > 450) {
@@ -337,34 +329,60 @@
                     });
                 }
             });
-        </script>
-        <script>
             $(".moreInfoBtn").click(function() {
                 $('#exmodal').modal('show');
+            });
+            $(document).ready(function() {
+                switch (window.location.hash) {
+                    case "#error-log":
+                        $('#errorLogModal').modal('show');
+                        break;
+                    case "#error-org":
+                        $('#errorOrgModal').modal('show');
+                        break;
+                    default:
+                        break;
+                }
             });
         </script>
         <script>
             var uid = "";
             var userRef = firebase.database().ref('/');
+            var postsRef = firebase.database().ref('/posts/');
             var lg = false;
             //
             firebase.auth().onAuthStateChanged(function(user) {
                 if (user) {
-                    uid = user.uid;
-                    lg = true;
-                    $("#accNavItem").html('<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' + user.displayName +
-                        ' <span class="caret"></span> </a> <ul class="dropdown-menu"> <li> <a href="posts.html">Your Posts</a> </li> <li> <a href="newpost.html">New Post</a> </li> <li> <a href="#" id="logout">Logout</a> </li> </ul>');
+                    if (user.email.includes("cps.edu")) {
+                        uid = user.uid;
+                        lg = true;
+                        $("#accNavItem").html('<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' + user.displayName +
+                            ' <span class="caret"></span> </a> <ul class="dropdown-menu"> <li> <a href="posts.html">Your Posts</a> </li> <li> <a href="newpost.html">New Post</a> </li> <li> <a href="#" id="logout">Logout</a> </li> </ul>');
                         $("#accNavItem").addClass('dropdown');
                         $("#main-header").removeClass('logout-header');
                         $("#main-header").addClass('login-header');
-                        $("#main-header").html('<div class="container"> <img src="'+ user.photoURL +'" class="img-rounded img-responsive" id="user-img" /> <div style="display:inline-block; margin-left: 40px"> <h1 style="color:#FFEB3B;" id="header-text-main">'+ user.displayName +'</h1> <p id="header-text-secondary"><button class="btn btn-default" data-toggle="modal" data-target="#aboutModal">Get Started</button> </p> </div> </div>');
-                    userRef = firebase.database().ref('/users/' + uid + "/");
-                    //
-                    userRef.set({
-                        "name": user.displayName,
-                        "gmail": user.email,
-                        "profile_picture": user.photoURL
-                    });
+                        $("#main-header").html('<div class="container"> <img src="' + user.photoURL +
+                            '" class="img-rounded img-responsive" id="user-img" /> <div style="display:inline-block; margin-left: 40px"> <h1 style="color:#FFEB3B;" id="header-text-main">' + user.displayName +
+                            '</h1> <p id="header-text-secondary"><button class="btn btn-default" data-toggle="modal" data-target="#aboutModal">Get Started</button> </p> </div> </div>');
+                        userRef = firebase.database().ref('/users/' + uid + "/");
+                        //
+                        userRef.set({
+                            "name": user.displayName,
+                            "email": user.email,
+                            "profile_picture": user.photoURL
+                        });
+                    } else {
+                      lg = true;
+                      $("#accNavItem").html('<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' + user.displayName +
+                          ' <span class="caret"></span> </a> <ul class="dropdown-menu"> <li> <a href="#" id="logout">Logout</a> </li> </ul>');
+                      $("#accNavItem").addClass('dropdown');
+                      $("#main-header").removeClass('logout-header');
+                      $("#main-header").addClass('login-header');
+                      $("#main-header").html('<div class="container"> <img src="' + user.photoURL +
+                          '" class="img-rounded img-responsive" id="user-img" /> <div style="display:inline-block; margin-left: 40px"> <h1 style="color:#FFEB3B;" id="header-text-main">' + user.displayName +
+                          '</h1> <p id="header-text-secondary"><button class="btn btn-default" data-toggle="modal" data-target="#aboutModal">Get Started</button> </p> </div> </div>');
+                        $('#errorOrgModal').modal('show');
+                    }
                 }
             });
             //
@@ -382,12 +400,138 @@
                         $("#accNavItem").removeClass('open');
                         $("#main-header").removeClass('login-header');
                         $("#main-header").addClass('logout-header');
-                        $("#main-header").html('<div class="container"> <h1 style="color:#ffde00;">Welcome</h1> <p>to the <b>Lost & Found</b> app!</p> <button class="btn btn-default" data-toggle="modal" data-target="#aboutModal">Get Started</button> </div>');
+                        $("#main-header").html(
+                            '<div class="container"> <h1 style="color:#ffde00;">Welcome</h1> <p>to the <b>Lost & Found</b> app!</p> <button class="btn btn-default" data-toggle="modal" data-target="#aboutModal">Get Started</button> </div>'
+                        );
                         lg = false;
                     }, function(error) {
+                        alert("something died, check console or contact codelab");
                         console.log("um " + error);
                     });
                 }
+            });
+        </script>
+        <script>
+            postsRef.on("child_added", function(data) {
+                firebase.database().ref('/users/' + data.val().item_author).once('value').then(function(snapshot) {
+                    //
+                    var friendly_time;
+                    var date_full;
+                    var item_date = new Date(data.val().item_timestamp);
+                    var current_date = new Date();
+                    var elapsedTime = Math.round((current_date.getTime() - item_date.getTime()) / 1000); // MILL -> SEC
+                    var itemDateString = item_date.toDateString().split(" ");
+                    var itemTimeFriendly;
+                    if (item_date.getHours() >= 13) {
+                        itemTimeFriendly = item_date.getHours() - 12;
+                    } else {
+                        itemTimeFriendly = item_date.getHours()
+                    }
+                    if (itemTimeFriendly == 0) {
+                        itemTimeFriendly = 12;
+                    }
+                    if (item_date.getHours() >= 12) {
+                        itemTimeFriendly += ":" + item_date.getMinutes() + "pm";
+                    } else {
+                        itemTimeFriendly += ":" + item_date.getMinutes() + "am";
+                    }
+                    date_full = itemDateString[1] + " " + itemDateString[2] + ", " + itemDateString[3] + " at " + itemTimeFriendly;
+                    if (elapsedTime < 60) {
+                        friendly_time = "a few seconds ago";
+                    } else if (elapsedTime > 60 && elapsedTime < 3600) {
+                        var formatTime = Math.round(elapsedTime / 60);
+                        if (formatTime == 1) {
+                            friendly_time = formatTime + " minute ago"
+                        } else {
+                            friendly_time = formatTime + " minutes ago"
+                        }
+                    } else if (elapsedTime >= 3600 && elapsedTime < 86400) {
+                        var formatTime = Math.round(elapsedTime / 3600);
+                        if (formatTime == 1) {
+                            friendly_time = formatTime + " hour ago"
+                        } else {
+                            friendly_time = formatTime + " hours ago"
+                        }
+                    } else if (elapsedTime >= 86400 && elapsedTime < 864000) {
+                        var formatTime = Math.round(elapsedTime / 86400);
+                        if (formatTime == 1) {
+                            friendly_time = formatTime + " day ago"
+                        } else {
+                            friendly_time = formatTime + " days ago"
+                        }
+                    } else if (elapsedTime > 864000) {
+                        friendly_time = date_full;
+                    }
+                    //
+                    var item_data = {
+                        "uid": data.key,
+                        "title": data.val().item_title,
+                        "desc": data.val().item_desc,
+                        "loc": data.val().item_loc,
+                        "timestamp": data.val().item_timestamp,
+                        "friendly_time": friendly_time,
+                        "date_full": date_full,
+                        "tags": data.val().item_tags,
+                        "status": data.val().item_status,
+                        "author_name": snapshot.val().name,
+                        "author_email": snapshot.val().email,
+                        "author_picture": snapshot.val().profile_picture
+                    };
+                    //
+                    var desc = item_data.desc;
+                    if (item_data.desc.length > 210) {
+                        desc = item_data.desc.substring(0, 210);
+                        desc += "<i>... Expand Card to see More</i>";
+                    }
+                    //
+                    var css_status;
+                    if (item_data.status == "Claimed") {
+                        css_status = "claimed";
+                    } else {
+                        css_status = "unclaimed";
+                    }
+                    //
+                    $("#main").append('<div class="panel panel-default">' + '<div class="panel-heading"><img src="' + item_data.author_picture + '" style="width: 20px; margin-right: 5px" /> ' + item_data.author_name + ' <small>' +
+                        item_data.friendly_time + '</small><span class="tags_header pull-right">' + '<span class="item_tag">' + item_data.tags[0] + '</span> <span class="item_tag ' + css_status + '">' + item_data.status +
+                        '</span></span>' + '</div>' + '<div class="panel-body">' + '<div class="panel-body">' + '<div class="row">' +
+                        '<div class="col-xs-12 col-sm-1 text-center"><img src="assets/media/item_thumb_default.png" class="item_thumb"/></div>' + '<div class="col-xs-12 col-sm-11">' +
+                        '<h5 class="lead" style="display:inline-block">' + item_data.title + '</h5><span class="pull-right infoBtn" data-iteminfo=\'' + JSON.stringify(item_data) +
+                        '\' style="display:inline-block;padding-top:12px">' + '<i class="material-icons">more_vert</i>' + '</span>' + '<p>' + desc + '</p>' + '</div>' + '</div>' + '</div>' + '</div>' + '</div>');
+                });
+            });
+            //
+            /*  postsRef.on("child_changed", function(data) {
+
+            });*/
+        </script>
+        <script>
+            $("#main").on("click", "span.infoBtn", function() {
+                $("#info_tags").empty();
+                var item_data = {
+                    "uid": $(this).data("iteminfo").uid,
+                    "title": $(this).data("iteminfo").title,
+                    "desc": $(this).data("iteminfo").desc,
+                    "loc": $(this).data("iteminfo").loc,
+                    "timestamp": $(this).data("iteminfo").timestamp,
+                    "friendly_time": $(this).data("iteminfo").friendly_time,
+                    "date_full": $(this).data("iteminfo").date_full,
+                    "tags": $(this).data("iteminfo").tags,
+                    "status": $(this).data("iteminfo").status,
+                    "author_name": $(this).data("iteminfo").author_name,
+                    "author_email": $(this).data("iteminfo").author_email,
+                    "author_picture": $(this).data("iteminfo").author_picture
+                };
+                //
+                $("#info_title").text(item_data.title);
+                $("#info_desc").text(item_data.desc);
+                $("#info_author").text(item_data.author_name);
+                $("#info_email").text(item_data.author_email);
+                $("#info_email").attr("href", "mailto:" + item_data.author_email);
+                $("#info_timestamp").text(item_data.date_full);
+                for (var i = 0; i < item_data.tags.length; i++) {
+                    $("#info_tags").append('<span class="item_tag">' + item_data.tags[i] + '</span> ')
+                }
+                $('#infoModal').modal('show');
             });
         </script>
     </body>
