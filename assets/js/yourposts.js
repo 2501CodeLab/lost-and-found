@@ -183,6 +183,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                     }
                     $("#main").append(itemCard);
                 });
+				
+				$(".loader_wrapper").hide();
+				
             });
             //
             userPostRef.on("child_changed", function(data) {

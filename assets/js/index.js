@@ -221,6 +221,8 @@ firebase.database().ref('/users/').once('value').then(function(snapshot) {
 		
 	});
 		
+		$(".loader_wrapper").hide();
+		
 		
 	
 	});

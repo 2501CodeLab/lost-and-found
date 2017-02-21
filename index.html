@@ -14,6 +14,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="https://bootswatch.com/paper/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/loader.css" rel="stylesheet" type="text/css">
         <!-- OpenGraph -->
         <meta property="og:url" content="https://2501codelab.github.io/lost-and-found/">
         <meta property="og:type" content="website">
@@ -30,6 +31,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <!-- Favicons -->
         <!-- TODO Generate icons -->
+        
         <style>
             html {
                 position: relative;
@@ -328,6 +330,15 @@
                 <h1 style="color:#ffde00;">Welcome</h1>
                 <p>to the <b>Lost & Found</b> app!</p> <button class="btn btn-default" data-toggle="modal" data-target="#aboutModal">Get Started</button> </div>
         </div>
+        
+        <div class="loader_wrapper text-center">
+        	<div class="loader">
+  <svg class="circular" viewBox="25 25 50 50">
+    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+  </svg>
+</div>
+        </div>
+        
         <div class="container" id="main">
             <div class="panel panel-default" id="templateCard">
                 <div class="panel-heading"><img src="assets/media/item_thumb_default.png" style="width: 20px; margin-right: 5px" class="item_author_picture" /> <span class="item_author_name">item_data.author_name</span> <small class="item_friendly_time">item_data.friendly_time</small><span class="tags_header pull-right"><span class="item_tag item_tags0">item_data.tags[0]</span>                    <span class="item_tag css_status">  item_data.status</span></span>
