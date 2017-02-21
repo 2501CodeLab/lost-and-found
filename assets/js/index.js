@@ -189,7 +189,17 @@ firebase.database().ref('/users/').once('value').then(function(snapshot) {
             
 			itemCard.find(".item_author_name").text(item_data.author_name);
             itemCard.find(".item_friendly_time").text(item_data.friendly_time);
-            itemCard.find(".item_tags0").text(item_data.tags[0]);
+            
+			
+			if(item_data.tags){
+				itemCard.find(".item_tags0").text(item_data.tags[0]);
+			} else {
+				itemCard.find(".item_tags0").remove();
+			}
+			
+			
+			
+			
             itemCard.find(".css_status").text(item_data.status);
             itemCard.find(".css_status").addClass(css_status);
             itemCard.find(".lead").text(item_data.title);
@@ -243,9 +253,14 @@ $("#main").on("click", "span.infoBtn", function() {
     $("#info_email").attr("href", "mailto:" + mainData[itemid].author_email);
     $("#info_timestamp").text(mainData[itemid].date_full);
     $("#info_tags").append('<span class="item_tag ' + mainData[itemid].status.toLowerCase() + '">' + mainData[itemid].status + '</span> ');
-    for (var i = 0; i < mainData[itemid].tags.length; i++) {
+	
+	if(mainData[itemid].tags){
+				for (var i = 0; i < mainData[itemid].tags.length; i++) {
         $("#info_tags").append('<span class="item_tag">' + mainData[itemid].tags[i] + '</span> ');
     }
+			}
+	
+    
     $("#info_loc").text(mainData[itemid].loc);
 
     if (!mainData[itemid].picture || mainData[itemid].picture == false) {
