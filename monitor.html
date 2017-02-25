@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Viewports -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Desc. -->
+        <title>LT Lost & Found | LTCodelab</title>
+        <meta name="description" content="The LT Lost & Found app is a community-driven app that helps students find and report items found around Lane Tech.">
+        <meta name="author" content="LTCodelab">
+        <!-- CSS -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://bootswatch.com/paper/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/loader.css" rel="stylesheet" type="text/css">
+        <!-- OpenGraph -->
+        <meta property="og:url" content="https://2501codelab.github.io/lost-and-found/">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="LT Lost & Found">
+        <meta property="og:description" content="The LT Lost & Found app is a community-driven app that helps students find and report items found around Lane Tech.">
+        <!--<meta property="og:image" content="https://2501codelab.github.io/lost-and-found/assets/media/fb_bk.png">-->
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary"/>
+        <!--<meta name="twitter:site" content="@LTCodelab" />-->
+        <meta name="twitter:creator" content="@Zyplos"/>
+        <!-- Mobile -->
+        <meta name="theme-color" content="#4CAF50">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/media/apple-touch-icon.png">
+        <link rel="icon" type="image/png" href="assets/media/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="assets/media/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="assets/media/manifest.json">
+        <link rel="mask-icon" href="assets/media/safari-pinned-tab.svg" color="#a1db5e">
+        <link rel="shortcut icon" href="assets/media/favicon.ico">
+        <meta name="msapplication-config" content="assets/media/browserconfig.xml">
+        <meta name="theme-color" content="#a1db5e">
+        <style>
+            html {
+                position: relative;
+                min-height: 100%;
+            }
+            body {
+                margin-bottom: 60px;
+            }
+            #main-header {
+                margin-top: 64px;
+            }
+            #main-header {
+                color: #ffde00;
+                background-color: #4CAF50;
+                height: 500px;
+                text-align: center;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #version {
+                font-size: 8px;
+                color: lightgray;
+            }
+            .navbar-default {
+                background-color: #4CAF50;
+            }
+            .navbar-default .navbar-brand {
+                color: #baeaff;
+            }
+            .navbar-default .navbar-brand:focus,
+            .navbar-default .navbar-brand:hover {
+                color: #FFFFFF;
+            }
+            .navbar-default .navbar-nav > li > a {
+                color: #d6d6d6;
+            }
+            .navbar-default .navbar-nav > li > a:focus,
+            .navbar-default .navbar-nav > li > a:hover {
+                color: #FFFFFF;
+            }
+            .navbar-default .navbar-nav > .open > a,
+            .navbar-default .navbar-nav > .open > a:focus,
+            .navbar-default .navbar-nav > .open > a:hover {
+                background-color: #439c46;
+                color: #FFFFFF;
+            }
+            .navbar {
+                -webkit-box-shadow: none;
+            }
+            .navbar a.navbar-brand {
+                padding: 9px 15px 8px;
+            }
+            #navbar-image-main {
+                height: 45px !important;
+            }
+            footer {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 80px;
+                background-color: #4CAF50;
+            }
+            @media (max-width: 768px) {
+                .text-left {
+                    text-align: center;
+                }
+                .text-right {
+                    text-align: center;
+                }
+            }
+            #main {
+                margin-top: 30px;
+            }
+            ::-webkit-scrollbar-track {
+                background-color: #CCCCCC;
+            }
+            ::-webkit-scrollbar {
+                width: 10px;
+                background-color: #CCCCCC;
+            }
+            ::-webkit-scrollbar-thumb {
+                background-color: #ffde00;
+            }
+            small {
+                color: #a7a7a7;
+            }
+            .item_tag {
+                background-color: #dedede;
+                padding: 5px;
+                border-radius: 10px;
+            }
+            .unclaimed {
+                background-color: #ff3e3e;
+                color: white;
+            }
+            .claimed {
+                background-color: #1bcb28;
+                color: white;
+            }
+            .infoBtn,
+            .reportBtn {
+                cursor: pointer;
+            }
+            @media(max-width: 767px) {
+                .tags_header {
+                    display: none;
+                }
+            }
+            #user-img {
+                max-width: 200px;
+                max-height: 200px;
+                display: inline-block;
+            }
+            #templateCard {
+                display: none;
+            }
+            .icon-bar {
+                background-color: rgb(255, 255, 255) !important;
+            }
+        </style>
+        <!-- [indev] -->
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                },
+                i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-88791541-3', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+        <!-- -->
+        <div class="item text-center" id="templateCard">
+            <div class="container-fluid">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <img src="" style="width: 20px; margin-right: 5px" class="item_author_picture"/>
+                        <span class="item_author_name">item_data.author_name</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <img src="" class="item_picture img-responsive center-block"/>
+                                <small class="item_friendly_time">item_data.friendly_time</small><br>
+                                <span class="tags_header">
+                                    <span class="item_tag item_tags0">item_data.tags[0]</span>
+                                    <span class="item_tag css_status">
+                                        item_data.status</span>
+                                </span>
+                            </div>
+                            <div class="col-xs-12">
+                                <h3 class="item_title" style="display:inline-block">item_data.title</h3>
+                                <p class="item_desc">
+                                    desc
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- -->
+        <div class="container text-center">
+            <h2>Recently Lost Items</h2>
+            <p>(currently beta testing)</p>
+        <img src="assets/media/qr.png" class="img-responsive center-block" style="margin-top: 100px" />
+            <p>
+                <a href="https://goo.gl/XEDH2U">https://goo.gl/XEDH2U</a>
+            </p>
+        </div>
+        <div class="container" id="main">
+            <!-- -->
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active text-center">
+                        <h3>Visit the App!</h3>
+                        <p>Help us beta test!</p>
+
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+        </div>
+        <br>
+
+        <br>
+        <footer>
+            <div class="container" style="color: #ffde00">
+                <div style="padding-top: 30px" class="pull-left">
+                    <p>Made by LTCodelab with
+                        <span style="font-family: monospace;color:#ff3e3e;">&lt;/&gt;</span>
+                        2017</p>
+                </div>
+                <div style="padding-top: 20px" class="pull-right">
+                    <img src="../assets/media/zyplos_logo.svg" style="height: 45px"/>
+                </div>
+            </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+        <script>
+            var config = {
+                apiKey: "AIzaSyB3zpattBUMZTTGLAsfOxFojhaDow8qIFU",
+                authDomain: "ltlostandfound-4c850.firebaseapp.com",
+                databaseURL: "https://ltlostandfound-4c850.firebaseio.com",
+                storageBucket: "ltlostandfound-4c850.appspot.com",
+                messagingSenderId: "371485198623"
+            };
+            firebase.initializeApp(config);
+            console.log('%c --------------------------------------', 'color: #ff3e3e;');
+            console.log('%c rude', 'color: #ff3e3e;');
+            console.log('%c ', 'color: #ff3e3e;');
+            console.log('%c snooping around the console like that', 'color: #ff3e3e;');
+            console.log('%c Just kidding.', 'color: #ff3e3e;');
+            console.log('%c That\'s okay, if anything, we encourage it! Check out our Github at: https://github.com/2501CodeLab/', 'color: #ff3e3e;');
+            console.log('%c All of our projects\' code is usually there.', 'color: #ff3e3e;');
+            console.log('%c Found a bug? Broke something? Got an error? Report it to us!', 'color: #ff3e3e;');
+            console.log('%c --------------------------------------', 'color: #ff3e3e;');
+            console.log('%c>> CORE LOADED.', 'color: #ff3e3e;');
+        </script>
+        <script>
+            $(window).scroll(function () {
+                var sPos = $(window).scrollTop();
+                if (sPos > 450) {
+                    $(".navbar").css({"-webkit-box-shadow": "0 1px 2px rgba(0,0,0,0.3)"});
+                } else {
+                    $(".navbar").css({"-webkit-box-shadow": "none"});
+                }
+            });
+            $(document).ready(function () {
+                var winHeight = $(window).height();
+                calcHeight = winHeight - (winHeight * 0.8);
+                $("#main").css("margin-top", calcHeight + "px");
+                $('[data-toggle="tooltip"]').tooltip();
+
+            });
+            var uid = "";
+            var userRef = firebase.database().ref('/');
+            var postsRef = firebase.database().ref('/posts/');
+            var lg = false;
+            var mainData = {};
+            var coreData;
+            var mainUserData = {};
+            //
+            firebase.database().ref('/users/').once('value').then(function (snapshot) {
+                mainUserData = snapshot.val();
+                postsRef.once('value').then(function (data) {
+                    coreData = data;
+                    $.each(coreData.val(), function (k, v) {
+                        console.log(k);
+                        console.log(v);
+                        console.log("GETTING " + v.item_author)
+                        //
+                        var friendly_time;
+                        var date_full;
+                        var item_date = new Date(v.item_timestamp);
+                        var current_date = new Date();
+                        var elapsedTime = Math.round((current_date.getTime() - item_date.getTime()) / 1000); // MILL -> SEC
+                        var itemDateString = item_date.toDateString().split(" ");
+                        var itemTimeFriendly;
+                        if (item_date.getHours() >= 13) {
+                            itemTimeFriendly = item_date.getHours() - 12;
+                        } else {
+                            itemTimeFriendly = item_date.getHours();
+                        }
+                        if (itemTimeFriendly === 0) {
+                            itemTimeFriendly = 12;
+                        }
+                        if (item_date.getHours() >= 12) {
+                            itemTimeFriendly += ":" + item_date.getMinutes() + "pm";
+                        } else {
+                            itemTimeFriendly += ":" + item_date.getMinutes() + "am";
+                        }
+                        date_full = itemDateString[1] + " " + itemDateString[2] + ", " + itemDateString[3] + " at " + itemTimeFriendly;
+                        var formatTime;
+                        if (elapsedTime < 60) {
+                            friendly_time = "a few seconds ago";
+                        } else if (elapsedTime > 60 && elapsedTime < 3600) {
+                            formatTime = Math.round(elapsedTime / 60);
+                            if (formatTime == 1) {
+                                friendly_time = formatTime + " minute ago";
+                            } else {
+                                friendly_time = formatTime + " minutes ago";
+                            }
+                        } else if (elapsedTime >= 3600 && elapsedTime < 86400) {
+                            formatTime = Math.round(elapsedTime / 3600);
+                            if (formatTime == 1) {
+                                friendly_time = formatTime + " hour ago";
+                            } else {
+                                friendly_time = formatTime + " hours ago";
+                            }
+                        } else if (elapsedTime >= 86400 && elapsedTime < 864000) {
+                            formatTime = Math.round(elapsedTime / 86400);
+                            if (formatTime == 1) {
+                                friendly_time = formatTime + " day ago";
+                            } else {
+                                friendly_time = formatTime + " days ago";
+                            }
+                        } else if (elapsedTime > 864000) {
+                            friendly_time = date_full;
+                        }
+                        //
+                        var item_data = {
+                            "uid": k,
+                            "title": v.item_title,
+                            "desc": v.item_desc,
+                            "loc": v.item_loc,
+                            "picture": v.item_picture,
+                            "timestamp": v.item_timestamp,
+                            "friendly_time": friendly_time,
+                            "date_full": date_full,
+                            "tags": v.item_tags,
+                            "status": v.item_status,
+                            "author_name": mainUserData[v.item_author].name,
+                            "author_email": mainUserData[v.item_author].email,
+                            "author_picture": mainUserData[v.item_author].profile_picture
+                        };
+                        mainData[k] = item_data;
+                        //
+                        var desc = item_data.desc;
+
+                        //
+                        var css_status;
+                        if (item_data.status == "Claimed") {
+                            css_status = "claimed";
+                        } else {
+                            css_status = "unclaimed";
+                        }
+                        //
+                        var itemCard = $("#templateCard").clone();
+                        itemCard.removeAttr("id");
+                        itemCard.find(".item_author_picture").attr("src", item_data.author_picture);
+                        itemCard.find(".item_author_name").text(item_data.author_name);
+                        itemCard.find(".item_friendly_time").text(item_data.friendly_time);
+                        if (item_data.tags) {
+                            itemCard.find(".item_tags0").text(item_data.tags[0]);
+                        } else {
+                            itemCard.find(".item_tags0").remove();
+                        }
+                        itemCard.find(".css_status").text(item_data.status);
+                        itemCard.find(".css_status").addClass(css_status);
+                        itemCard.find(".item_title").text(item_data.title);
+                        itemCard.find(".infoBtn").data("itemid", item_data.uid);
+                        itemCard.find(".item_desc").text(desc);
+                        if (!v.item_picture || v.item_picture == false) {
+                            itemCard.find(".item_picture").attr('src', 'assets/media/item_full_1080p.png');
+                        } else {
+                            itemCard.find(".item_picture").attr('src', v.item_picture);
+                        }
+                        $(".carousel-inner").prepend(itemCard);
+                    });
+                    $('.carousel').carousel({interval: 2000, pause: null, wrap: true});
+                });
+            });
+
+            //
+        </script>
+    </body>
+</html>

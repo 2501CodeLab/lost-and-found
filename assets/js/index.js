@@ -39,11 +39,10 @@ firebase.auth().onAuthStateChanged(function(user) {
         if (user.email.includes("cps.edu")) {
             uid = user.uid;
             lg = true;
-            $("#accNavItem").html('<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' + user.displayName + ' <span class="caret"></span> </a> <ul class="dropdown-menu"> <li> <a href="yourposts.html">Your Posts</a> </li>  <li> <a href="#" id="logout">Logout</a> </li> </ul>');
-            $("#accNavItem").addClass('dropdown');
-            $("#main-header").removeClass('logout-header');
-            $("#main-header").addClass('login-header');
-            $("#main-header").html('<div class="container"> <img src="' + user.photoURL + '" class="img-rounded img-responsive" id="user-img" /> <div style="display:inline-block; margin-left: 40px"> <h1 style="color:#FFEB3B;" id="header-text-main">' + user.displayName + '</h1> <p id="header-text-secondary"><button class="btn btn-default" data-toggle="modal" data-target="#aboutModal">Get Started</button> </p> </div> </div>');
+            $("#accNavItem").html('<a href="#" id="logout"> Logout </a>');
+
+            $("#welcome_msg").text("Welcome back");
+
             userRef = firebase.database().ref('/users/' + uid + "/");
             //
             userRef.update({
@@ -53,11 +52,10 @@ firebase.auth().onAuthStateChanged(function(user) {
             });
         } else {
             lg = true;
-            $("#accNavItem").html('<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' + user.displayName + ' <span class="caret"></span> </a> <ul class="dropdown-menu"> <li> <a href="#" id="logout">Logout</a> </li> </ul>');
-            $("#accNavItem").addClass('dropdown');
-            $("#main-header").removeClass('logout-header');
-            $("#main-header").addClass('login-header');
-            $("#main-header").html('<div class="container"> <img src="' + user.photoURL + '" class="img-rounded img-responsive" id="user-img" /> <div style="display:inline-block; margin-left: 40px"> <h1 style="color:#FFEB3B;" id="header-text-main">' + user.displayName + '</h1> <p id="header-text-secondary"><button class="btn btn-default" data-toggle="modal" data-target="#aboutModal">Get Started</button> </p> </div> </div>');
+            $("#accNavItem").html('<a href="#" id="logout"> Logout </a>');
+
+            $("#welcome_msg").text("Welcome back");
+
             $('#errorOrgModal').modal('show');
         }
     }
@@ -73,11 +71,8 @@ $("nav").on("click", "a#logout", function() {
     if (lg) {
         firebase.auth().signOut().then(function() {
             $("#accNavItem").html('<a href="#"> Login </a>');
-            $("#accNavItem").removeClass('dropdown');
-            $("#accNavItem").removeClass('open');
-            $("#main-header").removeClass('login-header');
-            $("#main-header").addClass('logout-header');
-            $("#main-header").html('<div class="container"> <h1 style="color:#ffde00;">Welcome</h1> <p>to the <b>Lost & Found</b> app!</p> <button class="btn btn-default" data-toggle="modal" data-target="#aboutModal">Get Started</button> </div>');
+
+            $("#welcome_msg").text("Welcome");
             lg = false;
         }, function(error) {
             alert("something died, check console or contact codelab");
@@ -87,22 +82,22 @@ $("nav").on("click", "a#logout", function() {
 });
 
 firebase.database().ref('/users/').once('value').then(function(snapshot) {
-	
-	mainUserData = snapshot.val();
-	
-	
-	postsRef.once('value').then(function(data) {
-		
-		coreData = data;
-		
-		
-		
-		$.each(coreData.val(), function(k, v){
-		console.log(k);
-		console.log(v);
-		
-	
-			console.log("GETTING " + v.item_author)
+
+    mainUserData = snapshot.val();
+
+
+    postsRef.once('value').then(function(data) {
+
+        coreData = data;
+
+
+
+        $.each(coreData.val(), function(k, v) {
+            console.log(k);
+            console.log(v);
+
+
+            console.log("GETTING " + v.item_author)
             //
             var friendly_time;
             var date_full;
@@ -186,27 +181,27 @@ firebase.database().ref('/users/').once('value').then(function(snapshot) {
             var itemCard = $("#templateCard").clone();
             itemCard.removeAttr("id");
             itemCard.find(".item_author_picture").attr("src", item_data.author_picture);
-            
-			itemCard.find(".item_author_name").text(item_data.author_name);
+
+            itemCard.find(".item_author_name").text(item_data.author_name);
             itemCard.find(".item_friendly_time").text(item_data.friendly_time);
-            
-			
-			if(item_data.tags){
-				itemCard.find(".item_tags0").text(item_data.tags[0]);
-			} else {
-				itemCard.find(".item_tags0").remove();
-			}
-			
-			
-			
-			
+
+
+            if (item_data.tags) {
+                itemCard.find(".item_tags0").text(item_data.tags[0]);
+            } else {
+                itemCard.find(".item_tags0").remove();
+            }
+
+
+
+
             itemCard.find(".css_status").text(item_data.status);
             itemCard.find(".css_status").addClass(css_status);
             itemCard.find(".lead").text(item_data.title);
             itemCard.find(".infoBtn").data("itemid", item_data.uid);
             itemCard.find(".item_desc").text(desc);
             if (!v.item_picture || v.item_picture == false) {
-                
+
                 itemCard.find(".item_picture").css('background-image', 'url(assets/media/item_thumb_default.png)');
 
             } else {
@@ -214,22 +209,22 @@ firebase.database().ref('/users/').once('value').then(function(snapshot) {
 
             }
             $("#main").prepend(itemCard);
-           
-      
-    
-		
-		
-	});
-		
-		$(".loader_wrapper").hide();
-		
-		
-	
-	});
-	
-	
-	
-	});
+
+
+
+
+
+        });
+
+        $(".loader_wrapper").hide();
+
+
+
+    });
+
+
+
+});
 
 
 
@@ -237,11 +232,11 @@ firebase.database().ref('/users/').once('value').then(function(snapshot) {
 
 
 postsRef.on("child_added", function(data) {
-	
-	
-	
-       
-    
+
+
+
+
+
 });
 $("#main").on("click", "span.infoBtn", function() {
     $("#info_picture").attr("src", "assets/media/item_full_1080p.png");
@@ -255,19 +250,19 @@ $("#main").on("click", "span.infoBtn", function() {
     $("#info_email").attr("href", "mailto:" + mainData[itemid].author_email);
     $("#info_timestamp").text(mainData[itemid].date_full);
     $("#info_tags").append('<span class="item_tag ' + mainData[itemid].status.toLowerCase() + '">' + mainData[itemid].status + '</span> ');
-	
-	if(mainData[itemid].tags){
-				for (var i = 0; i < mainData[itemid].tags.length; i++) {
-        $("#info_tags").append('<span class="item_tag">' + mainData[itemid].tags[i] + '</span> ');
+
+    if (mainData[itemid].tags) {
+        for (var i = 0; i < mainData[itemid].tags.length; i++) {
+            $("#info_tags").append('<span class="item_tag">' + mainData[itemid].tags[i] + '</span> ');
+        }
     }
-			}
-	
-    
+
+
     $("#info_loc").text(mainData[itemid].loc);
 
     if (!mainData[itemid].picture || mainData[itemid].picture == false) {
         $("#info_picture").hide();
-          $("#info_picture").attr("src", "assets/media/item_thumb_default.png)");
+        $("#info_picture").attr("src", "assets/media/item_thumb_default.png)");
 
     } else {
         $("#info_picture").attr("src", mainData[itemid].picture);

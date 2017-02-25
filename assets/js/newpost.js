@@ -104,7 +104,8 @@ firebase.auth().onAuthStateChanged(function(user) {
             window.location.replace("/lost-and-found/#error-org");
         }
     } else {
-        window.location.replace("/lost-and-found/#error-log");
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider);
     }
 });
 //
