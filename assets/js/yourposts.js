@@ -65,8 +65,9 @@ firebase.auth().onAuthStateChanged(function(user) {
             uid = user.uid;
             uname = user.displayName;
             lg = true;
-            $("#accNavItem").html('<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' + user.displayName + ' <span class="caret"></span> </a> <ul class="dropdown-menu">  <li> <a href="#" id="logout">Logout</a> </li> </ul>');
-            $("#accNavItem").addClass('dropdown');
+            $("#accNavItem").html('<a href="#" id="logout"> Logout </a>');
+
+
             userRef = firebase.database().ref('/users/' + uid + "/");
             userPostRef = firebase.database().ref('/userposts/' + uid + "/");
             //

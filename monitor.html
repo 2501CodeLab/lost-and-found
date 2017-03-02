@@ -29,14 +29,14 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <!-- Favicons -->
-        <link rel="apple-touch-icon" sizes="180x180" href="assets/media/apple-touch-icon.png">
-        <link rel="icon" type="image/png" href="assets/media/favicon-32x32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="assets/media/favicon-16x16.png" sizes="16x16">
-        <link rel="manifest" href="assets/media/manifest.json">
-        <link rel="mask-icon" href="assets/media/safari-pinned-tab.svg" color="#a1db5e">
-        <link rel="shortcut icon" href="assets/media/favicon.ico">
-        <meta name="msapplication-config" content="assets/media/browserconfig.xml">
-        <meta name="theme-color" content="#a1db5e">
+        <link rel="apple-touch-icon" sizes="180x180" href="/lost-and-found/assets/media/apple-touch-icon.png">
+        <link rel="icon" type="image/png" href="/lost-and-found/assets/media/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/lost-and-found/assets/media/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="/lost-and-found/assets/media/manifest.json">
+        <link rel="mask-icon" href="/lost-and-found/assets/media/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="shortcut icon" href="/lost-and-found/assets/media/favicon.ico">
+        <meta name="msapplication-config" content="/lost-and-found/assets/media/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
         <style>
             html {
                 position: relative;
@@ -215,26 +215,24 @@
         <div class="container text-center">
             <h2>Recently Lost Items</h2>
             <p>(currently beta testing)</p>
-        <img src="assets/media/qr.png" class="img-responsive center-block" style="margin-top: 100px" />
+            <img src="assets/media/qr.png" class="img-responsive center-block" style="margin-top: 100px"/>
             <p>
                 <a href="https://goo.gl/XEDH2U">https://goo.gl/XEDH2U</a>
             </p>
         </div>
         <div class="container" id="main">
             <!-- -->
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <div class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner" role="listbox">
                     <div class="item active text-center">
                         <h3>Visit the App!</h3>
                         <p>Help us beta test!</p>
-
                     </div>
                 </div>
             </div>
             <!-- -->
         </div>
         <br>
-
         <br>
         <footer>
             <div class="container" style="color: #ffde00">
@@ -285,7 +283,6 @@
                 calcHeight = winHeight - (winHeight * 0.8);
                 $("#main").css("margin-top", calcHeight + "px");
                 $('[data-toggle="tooltip"]').tooltip();
-
             });
             var uid = "";
             var userRef = firebase.database().ref('/');
@@ -371,7 +368,6 @@
                         mainData[k] = item_data;
                         //
                         var desc = item_data.desc;
-
                         //
                         var css_status;
                         if (item_data.status == "Claimed") {
@@ -405,7 +401,6 @@
                     $('.carousel').carousel({interval: 2000, pause: null, wrap: true});
                 });
             });
-
             //
         </script>
     </body>

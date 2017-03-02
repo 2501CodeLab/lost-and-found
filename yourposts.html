@@ -29,7 +29,15 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <!-- Favicons -->
-        <!-- TODO Generate icons -->
+
+<link rel="apple-touch-icon" sizes="180x180" href="/lost-and-found/assets/media/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/lost-and-found/assets/media/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/lost-and-found/assets/media/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/lost-and-found/assets/media/manifest.json">
+<link rel="mask-icon" href="/lost-and-found/assets/media/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/lost-and-found/assets/media/favicon.ico">
+<meta name="msapplication-config" content="/lost-and-found/assets/media/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
         <style>
             html {
                 position: relative;
@@ -189,7 +197,7 @@
                 display: inline-block;
             }
             .item_picture {
-                
+
                 background-image: url("assets/media/item_thumb_default.png");
                 background-repeat: no-repeat;
                 background-size: auto 70px;
@@ -383,25 +391,21 @@
                         <li class="hidden-sm hidden-md hidden-lg text-center">
                             <h5 style="color:#ebebeb">LT Lost & Found</h5>
                         </li>
-                        <li>
-                            <a href="/">
-                                <b>Main Site</b>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/lost-and-found">
-                                Go Back
-                            </a>
-                        </li>
-                        <li id="accNavItem"></li>
+                        <li> <a href="/lost-and-found">
+                                Home
+                            </a> </li>
+
+                            <li> <a href="newpost.html">New Post</a> </li>
+
+                            <li id="accNavItem"> <a href="#"> Login </a> </li>
                     </ul>
                 </div>
             </div>
         </nav>
         <div class="container" id="main">
             <h2>Your Posts</h2>
-            
-            
+
+
              <div class="loader_wrapper text-center">
         	<div class="loader">
   <svg class="circular" viewBox="25 25 50 50">
@@ -409,8 +413,8 @@
   </svg>
 </div>
         </div>
-            
-            
+
+
             <div class="panel panel-default" id="templateCard">
                 <div class="panel-heading"><img src="assets/media/item_thumb_default.png" style="width: 20px; margin-right: 5px" class="item_author_picture"/>
                     <span class="item_author_name">item_data.author_name</span>
