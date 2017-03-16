@@ -6,14 +6,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Desc. -->
-        <title>Your Posts - LT Lost & Found | LTCodelab</title>
+        <title>LT Lost & Found | LTCodelab</title>
         <meta name="description" content="The LT Lost & Found app is a community-driven app that helps students find and report items found around Lane Tech.">
         <meta name="author" content="LTCodelab">
         <!-- CSS -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="https://bootswatch.com/paper/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="assets/css/loader.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/loader.css" rel="stylesheet" type="text/css">
         <!-- OpenGraph -->
         <meta property="og:url" content="https://2501codelab.github.io/lost-and-found/">
         <meta property="og:type" content="website">
@@ -46,24 +46,10 @@
             }
             #main-header {
                 margin-top: 64px;
-            }
-            .logout-header {
                 color: #ffde00;
                 background-color: #4CAF50;
-                height: 500px;
+                height: 350px;
                 text-align: center;
-                display: -webkit-box;
-                display: -moz-box;
-                display: -ms-flexbox;
-                display: -webkit-flex;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .login-header {
-                color: #ffde00;
-                background-color: #4CAF50;
-                height: 500px;
                 display: -webkit-box;
                 display: -moz-box;
                 display: -ms-flexbox;
@@ -123,9 +109,6 @@
                     text-align: center;
                 }
             }
-            #main {
-                margin-top: 70px;
-            }
             ::-webkit-scrollbar-track {
                 background-color: #CCCCCC;
             }
@@ -152,7 +135,6 @@
                 background-color: #1bcb28;
                 color: white;
             }
-            .editBtn,
             .infoBtn,
             .reportBtn {
                 cursor: pointer;
@@ -173,37 +155,13 @@
             .icon-bar {
                 background-color: rgb(255, 255, 255) !important;
             }
-            #tagsList {
-                background-color: #f5f5f5;
-                align-items: center;
-                padding: 10px;
-            }
-            .close {
-                font-size: 30px;
-                font-weight: 300;
-                line-height: 22px;
-                opacity: 0.5;
-                -webkit-transition: all 0.2s;
-                -o-transition: all 0.2s;
-                transition: all 0.2s;
-            }
-            .item_tag_edit {
-                background-color: #dedede;
-                padding: 6px;
-                border-radius: 10px;
-                margin: 5px;
-                display: inline-block;
-            }
             .item_picture {
-                background-image: url("assets/media/item_thumb_default.png");
+                background-image: url("../assets/media/item_thumb_default.png");
                 background-repeat: no-repeat;
                 background-size: auto 70px;
                 background-position: center;
                 height: 70px;
                 width: 70px;
-            }
-            #info_desc {
-                white-space: pre-wrap;
             }
         </style>
         <!-- [indev] -->
@@ -372,7 +330,7 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/">
-                        <!-- --><img src="assets/media/codelab_logo_dev.svg" id="navbar-image-main"/>
+                        <!-- --><img src="../assets/media/codelab_logo_dev.svg" id="navbar-image-main"/>
                         <!-- -->
                     </a>
                     <h5 class="navbar-text hidden-xs" style="color:#ebebeb">LT Lost & Found</h5>
@@ -394,7 +352,15 @@
                             </a>
                         </li>
                         <li>
+                            <a href="#" data-toggle="modal" data-target="#aboutModal">
+                                About
+                            </a>
+                        </li>
+                        <li>
                             <a href="newpost.html">New Post</a>
+                        </li>
+                        <li>
+                            <a href="yourposts.html">Your Posts</a>
                         </li>
                         <li id="accNavItem">
                             <a href="#">
@@ -405,23 +371,23 @@
                 </div>
             </div>
         </nav>
-        <div class="container" id="main">
-            <h2>Your Posts</h2>
-            <div class="loader_wrapper text-center">
-                <div class="loader">
-                    <svg class="circular" viewBox="25 25 50 50">
-                        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
-                    </svg>
-                </div>
+        <h3 class="text-center" style="margin-top: 100px;">Admin Panel</h3>
+        <div class="loader_wrapper text-center">
+            <div class="loader">
+                <svg class="circular" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                </svg>
             </div>
+        </div>
+        <div class="container" id="main">
             <div class="panel panel-default" id="templateCard">
-                <div class="panel-heading"><img src="assets/media/item_thumb_default.png" style="width: 20px; margin-right: 5px" class="item_author_picture"/>
+                <div class="panel-heading"><img src="../assets/media/item_thumb_default.png" style="width: 20px; margin-right: 5px" class="item_author_picture"/>
                     <span class="item_author_name">item_data.author_name</span>
                     <small class="item_friendly_time">item_data.friendly_time</small>
                     <span class="tags_header pull-right">
                         <span class="item_tag item_tags0">item_data.tags[0]</span>
                         <span class="item_tag css_status">
-                            Item Status Error</span>
+                            item_data.status</span>
                     </span>
                 </div>
                 <div class="panel-body">
@@ -445,7 +411,8 @@
                 </div>
             </div>
             <!-- -->
-        </div><br><br>
+        </div>
+        <br>
         <footer>
             <div class="container" style="color: #ffde00">
                 <div style="padding-top: 30px" class="pull-left">
@@ -454,14 +421,14 @@
                         2017</p>
                 </div>
                 <div style="padding-top: 20px" class="pull-right">
-                    <img src="assets/media/zyplos_logo.svg" style="height: 45px"/>
+                    <img src="../assets/media/zyplos_logo.svg" style="height: 45px"/>
                 </div>
             </div>
         </footer>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
-        <script src="assets/js/core.js"></script>
-        <script src="assets/js/yourposts.js"></script>
+        <script src="../assets/js/core.js"></script>
+        <script src="../assets/js/admin_index.js"></script>
     </body>
 </html>

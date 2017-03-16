@@ -1,5 +1,3 @@
 //console.log('%c>> SERVICE WORKED ENGAGED.', 'color: #ff3e3e;');
 
-// -- indev --
-
-// dont mind me
+// have any of you seen my chia pet

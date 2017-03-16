@@ -1,14 +1,15 @@
 var uid = "";
-var userRef = "";
-var userPostRef = "";
-var lg = false;
-var uname;
-var mainData = {};
+var userRef = firebase.database().ref('/');
 var postsRef = firebase.database().ref('/posts/');
+var lg = false;
+var mainData = {};
+var coreData;
+var mainUserData = {};
+var uname;
 //
 var canvas = document.getElementById("item_img_hidden");
 var ctx = canvas.getContext("2d");
-var imgdata;
+var imgdata = false;
 // https://www.abeautifulsite.net/whipping-file-inputs-into-shape-with-bootstrap-3
 $(function() {
     $(document).on('change', ':file', function() {
@@ -75,127 +76,152 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
             userRef = firebase.database().ref('/users/' + uid + "/");
-            userPostRef = firebase.database().ref('/userposts/' + uid + "/");
+
             //
-            userPostRef.on("child_added", function(data) {
-                console.log("---ADDED---");
-                console.log(data.key);
-                console.log(data.val());
-                console.log("------");
-                firebase.database().ref('/users/' + data.val().item_author).once('value').then(function(snapshot) {
-                    //
-                    var friendly_time;
-                    var date_full;
-                    var item_date = new Date(data.val().item_timestamp);
-                    var current_date = new Date();
-                    var elapsedTime = Math.round((current_date.getTime() - item_date.getTime()) / 1000); // MILL -> SEC
-                    var itemDateString = item_date.toDateString().split(" ");
-                    var itemTimeFriendly;
-                    if (item_date.getHours() >= 13) {
-                        itemTimeFriendly = item_date.getHours() - 12;
-                    } else {
-                        itemTimeFriendly = item_date.getHours();
-                    }
-                    if (itemTimeFriendly === 0) {
-                        itemTimeFriendly = 12;
-                    }
-                    if (item_date.getHours() >= 12) {
-                        itemTimeFriendly += ":" + item_date.getMinutes() + "pm";
-                    } else {
-                        itemTimeFriendly += ":" + item_date.getMinutes() + "am";
-                    }
-                    date_full = itemDateString[1] + " " + itemDateString[2] + ", " + itemDateString[3] + " at " + itemTimeFriendly;
-                    var formatTime;
-                    if (elapsedTime < 60) {
-                        friendly_time = "a few seconds ago";
-                    } else if (elapsedTime > 60 && elapsedTime < 3600) {
-                        formatTime = Math.round(elapsedTime / 60);
-                        if (formatTime == 1) {
-                            friendly_time = formatTime + " minute ago";
+            firebase.database().ref('/users/').once('value').then(function(snapshot) {
+
+                mainUserData = snapshot.val();
+                postsRef.once('value').then(function(data) {
+
+                    coreData = data;
+
+
+
+                    $.each(coreData.val(), function(k, v) {
+                        console.log(k);
+                        console.log(v);
+
+
+                        console.log("GETTING " + v.item_author)
+                        //
+                        var friendly_time;
+                        var date_full;
+                        var item_date = new Date(v.item_timestamp);
+                        var current_date = new Date();
+                        var elapsedTime = Math.round((current_date.getTime() - item_date.getTime()) / 1000); // MILL -> SEC
+                        var itemDateString = item_date.toDateString().split(" ");
+                        var itemTimeFriendly;
+                        if (item_date.getHours() >= 13) {
+                            itemTimeFriendly = item_date.getHours() - 12;
                         } else {
-                            friendly_time = formatTime + " minutes ago";
+                            itemTimeFriendly = item_date.getHours();
                         }
-                    } else if (elapsedTime >= 3600 && elapsedTime < 86400) {
-                        formatTime = Math.round(elapsedTime / 3600);
-                        if (formatTime == 1) {
-                            friendly_time = formatTime + " hour ago";
+                        if (itemTimeFriendly === 0) {
+                            itemTimeFriendly = 12;
+                        }
+                        if (item_date.getHours() >= 12) {
+                            itemTimeFriendly += ":" + item_date.getMinutes() + "pm";
                         } else {
-                            friendly_time = formatTime + " hours ago";
+                            itemTimeFriendly += ":" + item_date.getMinutes() + "am";
                         }
-                    } else if (elapsedTime >= 86400 && elapsedTime < 864000) {
-                        formatTime = Math.round(elapsedTime / 86400);
-                        if (formatTime == 1) {
-                            friendly_time = formatTime + " day ago";
+                        date_full = itemDateString[1] + " " + itemDateString[2] + ", " + itemDateString[3] + " at " + itemTimeFriendly;
+                        var formatTime;
+                        if (elapsedTime < 60) {
+                            friendly_time = "a few seconds ago";
+                        } else if (elapsedTime > 60 && elapsedTime < 3600) {
+                            formatTime = Math.round(elapsedTime / 60);
+                            if (formatTime == 1) {
+                                friendly_time = formatTime + " minute ago";
+                            } else {
+                                friendly_time = formatTime + " minutes ago";
+                            }
+                        } else if (elapsedTime >= 3600 && elapsedTime < 86400) {
+                            formatTime = Math.round(elapsedTime / 3600);
+                            if (formatTime == 1) {
+                                friendly_time = formatTime + " hour ago";
+                            } else {
+                                friendly_time = formatTime + " hours ago";
+                            }
+                        } else if (elapsedTime >= 86400 && elapsedTime < 864000) {
+                            formatTime = Math.round(elapsedTime / 86400);
+                            if (formatTime == 1) {
+                                friendly_time = formatTime + " day ago";
+                            } else {
+                                friendly_time = formatTime + " days ago";
+                            }
+                        } else if (elapsedTime > 864000) {
+                            friendly_time = date_full;
+                        }
+                        //
+                        var item_data = {
+                            "uid": k,
+                            "title": v.item_title,
+                            "desc": v.item_desc,
+                            "loc": v.item_loc,
+                            "picture": v.item_picture,
+                            "timestamp": v.item_timestamp,
+                            "friendly_time": friendly_time,
+                            "date_full": date_full,
+                            "tags": v.item_tags,
+                            "status": v.item_status,
+                            "author_name": mainUserData[v.item_author].name,
+                            "author_email": mainUserData[v.item_author].email,
+                            "author_picture": mainUserData[v.item_author].profile_picture
+                        };
+                        mainData[k] = item_data;
+                        //
+                        var desc = item_data.desc;
+                        if (item_data.desc.length > 210) {
+                            desc = item_data.desc.substring(0, 210);
+                            desc += "... Expand Card to see More";
+                        }
+                        //
+                        var css_status;
+                        if (item_data.status == "Claimed") {
+                            css_status = "claimed";
                         } else {
-                            friendly_time = formatTime + " days ago";
+                            css_status = "unclaimed";
                         }
-                    } else if (elapsedTime > 864000) {
-                        friendly_time = date_full;
-                    }
-                    //
-                    var item_data = {
-                        "uid": data.key,
-                        "title": data.val().item_title,
-                        "desc": data.val().item_desc,
-                        "loc": data.val().item_loc,
-                        "picture": data.val().item_picture,
-                        "timestamp": data.val().item_timestamp,
-                        "friendly_time": friendly_time,
-                        "date_full": date_full,
-                        "tags": data.val().item_tags,
-                        "status": data.val().item_status,
-                        "author_name": snapshot.val().name,
-                        "author_email": snapshot.val().email,
-                        "author_picture": snapshot.val().profile_picture
-                    };
-                    mainData[data.key] = item_data;
-                    //
-                    var desc = item_data.desc;
-                    if (item_data.desc.length > 210) {
-                        desc = item_data.desc.substring(0, 210);
-                        desc += "... Expand Card to see More";
-                    }
-                    var itemCard = $("#templateCard").clone();
-                    itemCard.attr("id", item_data.uid);
-                    itemCard.find(".item_author_picture").attr("src", item_data.author_picture);
-                    itemCard.find(".item_author_name").text(item_data.author_name);
-                    itemCard.find(".item_friendly_time").text(item_data.friendly_time);
-                    //console.log(item_data.tags[0]);
-                    if (item_data.tags) {
-                        itemCard.find(".item_tags0").text(item_data.tags[0]);
-                    } else {
-                        itemCard.find(".item_tags0").remove();
-                    }
-                    //
-                    //console.log("ADDED STATUS " + item_data.status.toLowerCase());
-                    if (item_data.status.toLowerCase() == "claimed") {
-                        itemCard.find(".css_status").text("Claimed");
-                    } else {
-                        itemCard.find(".css_status").text("Unclaimed");
-                    }
-                    //
-                    if (item_data.status.toLowerCase() == "claimed") {
-                        itemCard.find(".css_status").attr("class", "item_tag claimed css_status");
-                    } else {
-                        itemCard.find(".css_status").attr("class", "item_tag unclaimed css_status");
-                    }
-                    //
-                    itemCard.find(".lead").text(item_data.title);
-                    itemCard.find(".infoBtn").data("itemid", item_data.uid);
-                    itemCard.find(".item_desc").text(desc);
-                    if (data.val().item_picture) {
-                        itemCard.find(".item_picture").css('background-image', 'url(' + data.val().item_picture + ')');
-                    } else {
-                        itemCard.find(".item_picture").css('background-image', 'url(assets/media/item_thumb_default.png)');
-                    }
-                    $("#main").append(itemCard);
+                        //
+                        var itemCard = $("#templateCard").clone();
+                        itemCard.attr("id", item_data.uid);
+                        itemCard.find(".item_author_picture").attr("src", item_data.author_picture);
+
+                        itemCard.find(".item_author_name").text(item_data.author_name);
+                        itemCard.find(".item_friendly_time").text(item_data.friendly_time);
+
+
+                        if (item_data.tags) {
+                            itemCard.find(".item_tags0").text(item_data.tags[0]);
+                        } else {
+                            itemCard.find(".item_tags0").remove();
+                        }
+
+
+
+
+                        itemCard.find(".css_status").text(item_data.status);
+                        itemCard.find(".css_status").addClass(css_status);
+                        itemCard.find(".lead").text(item_data.title);
+                        itemCard.find(".infoBtn").data("itemid", item_data.uid);
+                        itemCard.find(".item_desc").text(desc);
+                        if (!v.item_picture || v.item_picture == false) {
+
+                            itemCard.find(".item_picture").css('background-image', 'url(../assets/media/item_thumb_default.png)');
+
+                        } else {
+                            itemCard.find(".item_picture").css('background-image', 'url(' + v.item_picture + ')');
+
+                        }
+                        $("#main").prepend(itemCard);
+
+
+
+
+
+                    });
+
+                    $(".loader_wrapper").hide();
+
+
+
                 });
 
-                $(".loader_wrapper").hide();
+
 
             });
             //
-            userPostRef.on("child_changed", function(data) {
+            postsRef.on("child_changed", function(data) {
                 console.log("---CHANGED---");
                 console.log(data.key);
                 console.log(data.val());
@@ -262,9 +288,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                         "date_full": date_full,
                         "tags": data.val().item_tags,
                         "status": data.val().item_status,
-                        "author_name": snapshot.val().name,
-                        "author_email": snapshot.val().email,
-                        "author_picture": snapshot.val().profile_picture
                     };
                     mainData[data.key] = item_data;
                     //
@@ -275,8 +298,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                     }
                     //
                     var itemCard = $('#' + item_data.uid + '');
-                    itemCard.find(".item_author_picture").attr("src", item_data.author_picture);
-                    itemCard.find(".item_author_name").text(item_data.author_name);
                     itemCard.find(".item_friendly_time").text(item_data.friendly_time);
                     //console.log(item_data.tags[0]);
                     if (item_data.tags) {
@@ -313,7 +334,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                     }
                 });
             });
-            userPostRef.on("child_removed", function(data) {
+            postsRef.on("child_removed", function(data) {
                 $("#" + data.key).fadeOut("500", function() {
                     $(this).remove();
                 });
@@ -626,6 +647,7 @@ $("#editSubmit").click(function() {
         invalid = true;
     }
     console.log("LOC " + item_loc);
+    var uploadIMG = imgdata;
     //
     if (invalid) {
         $("#emptyWarning").text("Some of your fields are empty!");
@@ -634,25 +656,27 @@ $("#editSubmit").click(function() {
         }, 300);
     } else {
         var postUploadData = {};
-        postUploadData["userposts/" + uid + "/" + itemid] = {
+        postUploadData["userposts/" + coreData.val().item_author + "/" + itemid] = {
             "item_title": item_title,
             "item_desc": item_desc,
             "item_tags": item_tags,
-            "item_author": item_author,
+
             "item_timestamp": item_timestamp,
             "item_status": item_status,
             "item_loc": item_loc,
-            "item_picture": imgdata
+            "item_picture": uploadIMG
         };
         postUploadData["posts/" + itemid] = {
             "item_title": item_title,
             "item_desc": item_desc,
             "item_tags": item_tags,
-            "item_author": item_author,
+
             "item_timestamp": item_timestamp,
             "item_status": item_status,
             "item_loc": item_loc,
-            "item_picture": imgdata
+            "item_picture": uploadIMG
+
+
         };
         // Do a deep-path update
         firebase.database().ref("/").update(postUploadData, function(error) {

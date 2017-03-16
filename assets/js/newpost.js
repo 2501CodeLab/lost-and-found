@@ -86,11 +86,19 @@ var lg = false;
 var uname;
 //
 firebase.auth().onAuthStateChanged(function(user) {
+
+    if (lg == "logout") {
+        window.location.replace("/lost-and-found");
+        return;
+    }
+
     if (user) {
         if (user.email.includes("cps.edu")) {
+
             uid = user.uid;
             uname = user.displayName;
             lg = true;
+
             $("#accNavItem").html('<a href="#" id="logout"> Logout </a>');
             userRef = firebase.database().ref('/users/' + uid + "/");
             //
@@ -99,12 +107,17 @@ firebase.auth().onAuthStateChanged(function(user) {
                 "email": user.email,
                 "profile_picture": user.photoURL
             });
+
+            $(".loader_wrapper").hide();
+            $("#main").show();
+
         } else {
             window.location.replace("/lost-and-found/#error-org");
         }
     } else {
+
         var provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithPopup(provider);
+        firebase.auth().signInWithRedirect(provider);
     }
 });
 //
@@ -112,7 +125,10 @@ $("nav").on("click", "a#logout", function() {
     if (lg) {
         firebase.auth().signOut().then(function() {
             window.location.replace("/lost-and-found");
-            lg = false;
+
+            lg = "logout";
+
+
         }, function(error) {
             console.log("um " + error);
         });
