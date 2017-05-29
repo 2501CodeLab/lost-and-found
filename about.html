@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Desc. -->
-    <title>LT Lost & Found | LTCodeLab</title>
+    <title>About - LT Lost & Found | LTCodeLab</title>
     <meta name="description" content="The LT Lost & Found app is a community-driven app that helps students find and report items found around Lane Tech.">
     <meta name="author" content="LTCodelab">
     <!-- CSS -->
@@ -38,36 +38,7 @@
     <link rel="shortcut icon" href="/lost-and-found/assets/media/favicon.ico">
     <meta name="msapplication-config" content="/lost-and-found/assets/media/browserconfig.xml">
     <style>
-      body {
-        background-color: #f5f5f5;
-        padding-top: 0;
-      }
 
-      #main_header {
-        margin-top: 64px;
-        color: #fff !important;
-        background-color: #39B549;
-        height: 350px;
-        text-align: center;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      #main_header>.container>h1 {
-        color: #fff;
-      }
-
-      .navbar {
-        box-shadow: none;
-        -webkit-box-shadow: none;
-      }
-
-      #info_desc { white-space: pre-wrap; }
     </style>
     <!-- [indev] -->
     <script>
@@ -91,54 +62,6 @@
   <body>
     <!-- Loader -->
     <div id="loader_wrapper"><svg style="height: 75px;" id="loader" data-name="Loader" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 376.52 182.28"><defs><style>.ee896554-1a96-4f9e-84a6-e5f5ed0ce652{fill:#39b54a;}.a2a9b064-a259-4ecb-947c-3e87912d4880{fill:#ffde00;}</style></defs><title>CodeLab Loader</title><path class="ee896554-1a96-4f9e-84a6-e5f5ed0ce652" d="M38.75,122.82a38.1,38.1,0,0,0,11.45,28,38.63,38.63,0,0,0,28,11.45q3.41,6.58,10,20h-10A56.26,56.26,0,0,1,49,174.48a57.59,57.59,0,0,1-21.2-20.23,53.15,53.15,0,0,1-6.58-14.86,56.77,56.77,0,0,1-2.44-16.57V108.44a40.88,40.88,0,0,0-8-11A24.24,24.24,0,0,0,0,91.14a34.27,34.27,0,0,0,10.48-6.82,52.45,52.45,0,0,0,8.29-11V59.7a57.56,57.56,0,0,1,7.8-29.49A57.65,57.65,0,0,1,46.79,9,53.16,53.16,0,0,1,61.65,2.44,56.9,56.9,0,0,1,78.22,0h10q-2,4.15-2.19,4.14,0,.25-3.17,6.82a42.68,42.68,0,0,0-1.95,3.9Q79.68,17.06,78.22,20a38.23,38.23,0,0,0-28,11.7,38.11,38.11,0,0,0-11.45,28V74.32a50.59,50.59,0,0,0-2.44,10.24q-.73,4.39-6.58,6.58,6.09,1.71,6.82,5.85a75.73,75.73,0,0,0,2.19,10.48v15.35Z"/><path class="ee896554-1a96-4f9e-84a6-e5f5ed0ce652" d="M295.58,114.53v-7.07A75.87,75.87,0,0,0,297.77,97q.73-4.14,6.82-5.85-5.85-2.19-6.58-6.58a50.68,50.68,0,0,0-2.44-10.23V59.7a38.11,38.11,0,0,0-11.45-28,38.23,38.23,0,0,0-28-11.7q-1.46-2.92-2.68-5.12a43,43,0,0,0-1.95-3.9q-3.17-6.58-3.17-6.82-.24,0-2.19-4.14h10a56.91,56.91,0,0,1,16.57,2.44A53.17,53.17,0,0,1,287.54,9a57.66,57.66,0,0,1,20.23,21.2,57.56,57.56,0,0,1,7.8,29.49V73.35a52.39,52.39,0,0,0,8.29,11,34.26,34.26,0,0,0,10.48,6.82,24.23,24.23,0,0,0-10.72,6.34,40.86,40.86,0,0,0-8,11v14.38a56.78,56.78,0,0,1-2.44,16.57,53.17,53.17,0,0,1-6.58,14.86,57.61,57.61,0,0,1-21.2,20.23,56.27,56.27,0,0,1-29.24,7.8h-10q6.58-13.4,10-20a38.63,38.63,0,0,0,28-11.45,38.1,38.1,0,0,0,11.45-28Z"/><path class="ee896554-1a96-4f9e-84a6-e5f5ed0ce652" d="M354.06,110.42h22.45l-19.74,71.86H334.32Zm21-69.61v23H352.64v-23Z"/><rect id="loader_cursor" class="a2a9b064-a259-4ecb-947c-3e87912d4880" x="115.16" y="163.47" width="104" height="18.33"/></svg></div>
-    <!-- Modalspace -->
-    <div class="modal fade" id="infoModal" tabindex="-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <!-- <i class="material-icons pull-right reportBtn" data-toggle="tooltip" data-placement="left" title="Report Post">report</i> -->
-            <h4 class="modal-title" id="info_title"></h4> </div>
-          <div class="modal-body">
-            <p id="info_desc"></p> <br>
-            <h5>Contact</h5> <address>
-                            <strong id="info_author"></strong><br>
-                            <a id="info_email" href="mailto:"></a>
-                        </address>
-            <h5>Info</h5>
-            <p>Posted <span id="info_timestamp"></span> </p>
-            <p>Current location of item:<b>
-                                <span id="info_loc"></span>
-                            </b> </p>
-            <div id="info_tags"></div> <br> <img id="info_picture" class="img-responsive center-block" /> </div>
-          <div class="modal-footer"> <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> </div>
-        </div>
-      </div>
-    </div>
-    <!-- -->
-    <div class="modal fade" id="errorLogModal" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-            <p>You must be logged in to be able to post stuff and view your posts!</p>
-          </div>
-          <div class="modal-footer"> <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button> </div>
-        </div>
-      </div>
-    </div>
-    <!-- -->
-    <div class="modal fade" id="errorOrgModal" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-            <p>You seem to be using your personal account.</p>
-            <p>The LT Lost & Found app only works with CPS Google accounts.</p>
-            <p>You can look through posts, but you can't post any.</p>
-            <p>You can open an incognito window and log in through that if you don't want to sign out of your personal account.</p>
-          </div>
-          <div class="modal-footer"> <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button> </div>
-        </div>
-      </div>
-    </div>
     <!-- -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
@@ -169,46 +92,50 @@
       </div>
     </nav>
     <!-- -->
-    <div class="jumbotron logout-header" id="main_header">
-      <div class="container">
-        <h1>Welcome</h1>
-        <p>to the <b>Lost & Found</b> app!</p> <a class="btn btn-default" href="/lost-and-found/about.html">Get Started</a> <br><br>
-        <p>Scroll down to see recent posts!</p>
-      </div>
-    </div>
     <div class="container" id="main">
       <!-- -->
-      <div class="panel panel-default" id="templateCard_img">
-        <div class="panel-heading"><img src="assets/media/item_thumb_default.png" style="width: 20px; margin-right: 5px" class="item_author_picture" /> <span class="item_author_name">item_data.author_name</span> <small class="item_friendly_time">item_data.friendly_time</small>          <span class="tags_header pull-right">
-                        <span class="item_tag item_tags0">item_data.tags[0]</span> <span class="item_tag css_status">
-                            item_data.status</span> </span>
-        </div>
-        <div class="panel-img item_picture">
-          <div class="panel-heading-title lead"></div>
-        </div>
-        <div class="panel-body"> <span class="pull-right infoBtn" data-itemid="item_data.uid" style="display:inline-block;padding-top:12px">
-                              <i class="material-icons">more_vert</i>
-                          </span>
-          <p class="item_desc"></p>
-        </div>
-      </div>
+      <h2>About</h2>
+      <p>The LT Lost &amp; Found app is a community-driven app that helps students find and report items found around Lane Tech. Take a picture and create a post on the thing you've found, and people can visit the site to check if their lost item has been
+        found by someone.</p>
+        <!-- -->
+      <h2>Help</h2>
       <!-- -->
-      <div class="panel panel-default" id="templateCard">
-        <div class="panel-heading"><img src="assets/media/item_thumb_default.png" style="width: 20px; margin-right: 5px" class="item_author_picture" /> <span class="item_author_name">item_data.author_name</span> <small class="item_friendly_time">item_data.friendly_time</small>          <span class="tags_header pull-right">
-                        <span class="item_tag item_tags0">item_data.tags[0]</span> <span class="item_tag css_status">
-                            item_data.status</span> </span>
-        </div>
-        <div class="panel-body">
-          <div class="panel-body">
-            <h5 class="lead" style="display:inline-block">item_data.title</h5> <span class="pull-right infoBtn" data-itemid="item_data.uid" style="display:inline-block;padding-top:12px">
-                                    <i class="material-icons">more_vert</i>
-                                </span>
-            <p class="item_desc"> desc </p>
-          </div>
-        </div>
-      </div>
+      <h3>Reporting a lost thing</h3>
+      <p>If you've found a thing, you can make a new post on the app for people to see.</p>
+      <p>First, login to the app by clicking the Login link up top (make sure you're logged into your school account).</p>
+      <p>Once you've logged in, you can create a new post by clicking "New Post" in the menu.</p>
+      <p>Once you're at the New Post page, fill out the form.</p>
+      <p>The <b>Title</b> of the post should be what the item is (i.e. "Blue Sweater", "Lost Earphones").</p>
+      <p>The <b>Description</b> should have some details about the item.</p>
+      <p>You can also add a <b>Picture</b> to your post. The lost item should be in the center of the image.</p>
+      <p>You can also add <b>Tags</b>. Enter text into the textbox, and press enter. The first tag entered is the tag that will show on the front page preview. Other tags will be shown when the user clicks the more info icon.</p>
+      <p>Finally, the <b>Location</b> of the item.</p>
       <!-- -->
+      <h4>"I left the item with someone else."</h4>
+      <p>Select the "Room, office, etc." option and put in the location of the item.</p>
+      <!-- -->
+      <h4>"I still have the item."</h4>
+      <p>Select the other option.</p>
+      <p>When you're done, submit the item. It'll be shown at the top of the front page!</p>
+      <p><i>Small note: Your name and email is posted with the item for transparency, easy managing, and for people to be able to contact you.</i></p> <br>
+      <!-- -->
+      <h3>Looking for a lost thing</h3>
+      <p>If you've lost a thing, you can just go on the front page, no need to sign in to see the posts.</p>
+      <p>The front page is organized into cards. Each card shows the title, a snippet of the description, and the main tag for easy browsing, along with the status of the item (Unclaimed/Claimed).</p>
+      <p>You can click the more info icon (<i class="material-icons">more_vert</i>) on the right to see the rest of the description (if it's too long), contact information on the person who posted it, all the item's tags, and the full image (if there is one).</p>
+
+      <br>
+      <!-- -->
+      <h3>Editing a post and setting claim status</h3>
+      <p>At the top, click on "Your Posts." You will see a list of the posts you've made. Click on the more info icon (<i class="material-icons">more_vert</i>) and click the pencil (<i class="material-icons">edit</i>) at the top, or the edit post button at the bottom.</p>
+      <p>Like the "New Post" page, there's a Title field, Description, etc. However, now there's an option to set the item as "Claimed" or "Unclaimed". Check the box if the item has been claimed.</p> <br>
+      <!-- -->
+      <h3>Reporting bugs</h3>
+      <p>Fill out <a href="https://goo.gl/forms/byDVFJnp06um0sBf2">this form</a>.</p> <br>
+      <h3>Suggestions and Feedback</h3>
+      <p>Fill out <a href="https://goo.gl/forms/DCyunx279PCFMbfF3">this other form</a>.</p>
     </div> <br>
+    <!-- -->
     <footer>
         <div class="container footer-section">
             <div class="row">
@@ -234,13 +161,24 @@
           </div>
         </div>
     </footer>
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
-    <script src="assets/js/core.js"></script>
-    <script src="assets/js/index.js"></script>
+    <script>
+      console.log('%c --------------------------------------', 'color: #ff3e3e;');
+      console.log('%c rude', 'color: #ff3e3e;');
+      console.log('%c ', 'color: #ff3e3e;');
+      console.log('%c snooping around the console like that', 'color: #ff3e3e;');
+      console.log('%c Just kidding.', 'color: #ff3e3e;');
+      console.log('%c That\'s okay, if anything, we encourage it! Check out our Github at: https://github.com/2501CodeLab/', 'color: #ff3e3e;');
+      console.log('%c All of our projects\' code is usually there.', 'color: #ff3e3e;');
+      console.log('%c Found a bug? Broke something? Got an error? Report it to us!', 'color: #ff3e3e;');
+      console.log('%c --------------------------------------', 'color: #ff3e3e;');
+      console.log('%c>> CORE LOADED.', 'color: #ff3e3e;');
+      //
+      $(window).on('load', function(e) {
+        $("#loader_wrapper").fadeOut();
+      });
+    </script>
   </body>
 
 </html>

@@ -108,7 +108,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                 "profile_picture": user.photoURL
             });
 
-            $(".loader_wrapper").hide();
+            $("#loader_wrapper").hide();
             $("#main").show();
 
         } else {
@@ -130,7 +130,11 @@ $("nav").on("click", "a#logout", function() {
 
 
         }, function(error) {
-            console.log("um " + error);
+          alert("something died, check console or contact codelab");
+          console.log("------------------------------");
+          console.log("LOG PROCESS ERROR");
+          console.log(error);
+          console.log("------------------------------");
         });
     }
 });

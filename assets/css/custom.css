@@ -1,0 +1,246 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding-top: 80px;
+  padding-bottom: 250px;
+}
+
+@media(max-width:767px) {
+  body {
+    padding-bottom: 380px;
+  }
+}
+
+.navbar-default {
+  background-color: #39B549;
+}
+
+@media(max-width:767px) {
+  .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    background-color: #33a342;
+  }
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+  color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+  background-color: #44a248;
+  color: #fff;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+  background-color: #ffde00;
+  color: #FFFFFF;
+}
+
+.navbar {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a.navbar-brand {
+  padding: 9px 15px 8px;
+  color: white;
+}
+
+#navbar-image-main {
+  height: 45px !important;
+  display: inline-block;
+}
+
+footer {
+  background-color: #39B549;
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-section h1, .footer-section h2, .footer-section h3, .footer-section h4, .footer-section h5, .footer-section h6 {
+  color: white;
+}
+
+.footer-section {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  height: auto;
+}
+
+.footer-section a {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  width: 100%;
+  background-color: #33a642;
+  padding-bottom: 10px;
+  color: white;
+}
+
+#footer_html_tag {
+  font-family: monospace;
+  color: #ffde00;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .text-left {
+    text-align: center;
+  }
+  .text-right {
+    text-align: center;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background-color: #CCCCCC;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #CCCCCC;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ffde00;
+}
+
+small {
+  color: #737373;
+  ;
+}
+
+.item_tag {
+  background-color: #dedede;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.unclaimed {
+  background-color: #ff3e3e;
+  color: white;
+}
+
+.claimed {
+  background-color: #1bcb28;
+  color: white;
+}
+
+.infoBtn, .reportBtn {
+  cursor: pointer;
+}
+
+.panel-default>.panel-heading {
+  background-color: #efefef;
+}
+
+@media(max-width: 767px) {
+  .tags_header {
+    display: none;
+  }
+  .panel-default>.panel-heading.unclaimed_heading {
+    background-color: #ff3e3e;
+    color: white;
+  }
+  .panel-default>.panel-heading.claimed_heading {
+    background-color: #1bcb28;
+    color: white;
+  }
+  small {
+    color: white;
+  }
+}
+
+#templateCard, #templateCard_img {
+  display: none;
+}
+
+.icon-bar {
+  background-color: rgb(255, 255, 255) !important;
+}
+
+#loader_cursor {
+  animation: loaderfade 500ms ease-out 0s alternate infinite;
+  -webkit-animation: loaderfade 500ms ease-out 0s alternate infinite;
+  -moz-animation: loaderfade 500ms ease-out 0s alternate infinite;
+  -o-animation: loaderfade 500ms ease-out 0s alternate infinite;
+}
+
+@-webkit-keyframes loaderfade {
+  100% {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes loaderfade {
+  100% {
+    opacity: 0;
+  }
+}
+
+@-o-keyframes loaderfade {
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes loaderfade {
+  100% {
+    opacity: 0;
+  }
+}
+
+#loader_wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1370;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  overflow: none;
+}
+
+#loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.modal-content {
+  box-shadow: none;
+}
+
+.modal-backdrop.in {
+  opacity: 1;
+  background-color: white;
+}
+
+.panel-img {
+  position: relative;
+  height: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%
+}
+
+.panel-heading-title {
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: 24px;
+}

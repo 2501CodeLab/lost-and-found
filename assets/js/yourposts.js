@@ -155,7 +155,17 @@ firebase.auth().onAuthStateChanged(function(user) {
                         desc = item_data.desc.substring(0, 210);
                         desc += "... Expand Card to see More";
                     }
-                    var itemCard = $("#templateCard").clone();
+
+                    //
+                    var itemCard;
+                    if (data.val().item_picture) {
+                      itemCard = $("#templateCard_img").clone();
+                      itemCard.find(".item_picture").css('background-image', 'url(' + data.val().item_picture + ')');
+                    } else {
+
+                      itemCard = $("#templateCard").clone();
+                    }
+                    //
                     itemCard.attr("id", item_data.uid);
                     itemCard.find(".item_author_picture").attr("src", item_data.author_picture);
                     itemCard.find(".item_author_name").text(item_data.author_name);
@@ -175,23 +185,22 @@ firebase.auth().onAuthStateChanged(function(user) {
                     }
                     //
                     if (item_data.status.toLowerCase() == "claimed") {
-                        itemCard.find(".css_status").attr("class", "item_tag claimed css_status");
+                        itemCard.find(".css_status").attr("class", "item_tag claimed css_status claimed_heading");
+                        itemCard.find(".panel-heading").addClass("claimed_heading");
+
                     } else {
-                        itemCard.find(".css_status").attr("class", "item_tag unclaimed css_status");
+                        itemCard.find(".css_status").attr("class", "item_tag unclaimed css_status unclaimed_heading");
+                        itemCard.find(".panel-heading").addClass("unclaimed_heading");
                     }
                     //
                     itemCard.find(".lead").text(item_data.title);
                     itemCard.find(".infoBtn").data("itemid", item_data.uid);
                     itemCard.find(".item_desc").text(desc);
-                    if (data.val().item_picture) {
-                        itemCard.find(".item_picture").css('background-image', 'url(' + data.val().item_picture + ')');
-                    } else {
-                        itemCard.find(".item_picture").css('background-image', 'url(assets/media/item_thumb_default.png)');
-                    }
+
                     $("#main").append(itemCard);
                 });
 
-                $(".loader_wrapper").hide();
+                $("#loader_wrapper").hide();
 
             });
             //
@@ -297,20 +306,18 @@ firebase.auth().onAuthStateChanged(function(user) {
                     //
                     if (item_data.status.toLowerCase() === "claimed") {
                         //  console.log("CHANGE STATUS CSS TRUE");
-                        itemCard.find(".css_status").attr("class", "item_tag claimed css_status");
+                        itemCard.find(".css_status").attr("class", "item_tag claimed css_status claimed_heading");
+                        itemCard.find(".panel-heading").addClass("claimed_heading");
                     } else {
                         //console.log("CHANGE STATUS CSS FALSE");
                         itemCard.find(".css_status").attr("class", "item_tag unclaimed css_status");
+                        itemCard.find(".panel-heading").addClass("unclaimed_heading");
                     }
                     //
                     itemCard.find(".lead").text(item_data.title);
                     itemCard.find(".infoBtn").data("itemid", item_data.uid);
                     itemCard.find(".item_desc").text(desc);
-                    if (data.val().item_picture) {
-                        itemCard.find(".item_picture").css('background-image', 'url(' + data.val().item_picture + ')');
-                    } else {
-                        itemCard.find(".item_picture").css('background-image', 'url(assets/media/item_thumb_default.png)');
-                    }
+
                 });
             });
             userPostRef.on("child_removed", function(data) {
@@ -340,7 +347,11 @@ $("nav").on("click", "a#logout", function() {
 
             lg = "logout";
         }, function(error) {
-            console.log("um ", error);
+          alert("something died, check console or contact codelab");
+          console.log("------------------------------");
+          console.log("LOG PROCESS ERROR");
+          console.log(error);
+          console.log("------------------------------");
         });
     }
 });
@@ -505,9 +516,9 @@ $("#main").on("click", "span.infoBtn", function() {
 
 
     $("#info_loc").text(mainData[itemid].loc);
-    if (!mainData[itemid].picture || mainData[itemid].picture == false) {
+    if (!mainData[itemid].picture || mainData[itemid].picture === false) {
         $("#info_picture").hide();
-        $("#info_picture").attr("src", "assets/media/item_thumb_default.png)");
+
     } else {
         $("#info_picture").attr("src", mainData[itemid].picture);
         $("#info_picture").show();
@@ -535,8 +546,8 @@ $("#infoModal").on("click", ".editBtn", function() {
     }
     //
     imgdata = mainData[itemid].picture;
-    if (!imgdata || imgdata == false) {
-        $("#item_img_preview").attr("src", "assets/media/item_thumb_default.png)");
+    if (!imgdata || imgdata === false) {
+        $("#item_img_preview").attr("src", "assets/media/item_thumb_default.png");
     } else {
         $("#item_img_preview").attr("src", mainData[itemid].picture);
     }

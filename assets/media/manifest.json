@@ -1,18 +1,21 @@
 {
     "name": "Lost & Found",
+	"short_name": "Lost & Found",
     "icons": [
         {
-            "src": "lost-and-found/assets/media/android-chrome-192x192.png",
+            "src": "/lost-and-found/assets/media/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "lost-and-found/assets/media/android-chrome-512x512.png",
+            "src": "/lost-and-found/assets/media/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
     ],
-    "theme_color": "#a1db5e",
-    "background_color": "#a1db5e",
-    "display": "standalone"
+    "theme_color": "#39B549",
+    "background_color": "#39B549",
+    "display": "standalone",
+	"start_url": "/lost-and-found/index.html",
+	"scope": "/lost-and-found/"
 }
